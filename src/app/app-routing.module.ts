@@ -9,6 +9,7 @@ import { HomeComponent } from './home/components/home/home.component';
 import { CartComponent } from './shopping/components/cart/cart.component';
 import { CheckoutComponent } from './shopping/components/checkout/checkout.component';
 import { ConfirmationComponent } from './shopping/components/confirmation/confirmation.component';
+import { WishlistComponent } from './shopping/components/wishlist/wishlist.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path:'confirm',component:ConfirmationComponent},
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
-  {path:'reset-password',component:ResetPwComponent}
+  {path:'reset-password',component:ResetPwComponent},
+  {path:'wishlist',component:WishlistComponent}
 ];
 
 @NgModule({

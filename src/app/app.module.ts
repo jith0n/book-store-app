@@ -16,6 +16,8 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { MenuComponent } from './shared/components/menu/menu.component';
 import { BookCardComponent } from './books/components/book-card/book-card.component';
+import { WishlistComponent } from './shopping/components/wishlist/wishlist.component';
+import { CartItemComponent } from './shopping/components/cart-item/cart-item.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { BookCardComponent } from './books/components/book-card/book-card.compon
     HeaderComponent,
     FooterComponent,
     MenuComponent,
-    BookCardComponent
+    BookCardComponent,
+    WishlistComponent,
+    CartItemComponent
   ],
   imports: [
     BrowserModule,
