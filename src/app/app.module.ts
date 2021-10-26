@@ -18,6 +18,8 @@ import { MenuComponent } from './shared/components/menu/menu.component';
 import { BookCardComponent } from './books/components/book-card/book-card.component';
 import { WishlistComponent } from './shopping/components/wishlist/wishlist.component';
 import { CartItemComponent } from './shopping/components/cart-item/cart-item.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,10 @@ import { CartItemComponent } from './shopping/components/cart-item/cart-item.com
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
