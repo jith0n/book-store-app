@@ -20,6 +20,9 @@ import { WishlistComponent } from './shopping/components/wishlist/wishlist.compo
 import { CartItemComponent } from './shopping/components/cart-item/cart-item.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CouponsComponent } from './admin/components/manage-coupons/components/coupons/coupons.component';
+import { AddCouponComponent } from './admin/components/manage-coupons/components/add-coupon/add-coupon.component';
+import { OrdersComponent } from './admin/components/manage-orders/components/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,10 @@ import { HttpClientModule } from '@angular/common/http';
     MenuComponent,
     BookCardComponent,
     WishlistComponent,
-    CartItemComponent
+    CartItemComponent,
+    CouponsComponent,
+    AddCouponComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,

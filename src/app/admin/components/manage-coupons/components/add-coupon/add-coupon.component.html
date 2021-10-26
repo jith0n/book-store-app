@@ -1,0 +1,33 @@
+<form class="container" style="margin-top: 100px ;margin-bottom: 100px; width: 400px;" [formGroup]="addNewCouponForm"
+  (ngSubmit)="handleAddCoupon()">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Coupon Id</label>
+      <input formControlName="couponId" type="text" class="form-control" id="exampleInputEmail1"
+      [ngClass]="{'is-invalid': addNewCouponForm.get('couponId')?.touched && addNewCouponForm.get('couponId')?.invalid}"
+       aria-describedby="emailHelp" placeholder="Enter Coupon Id">
+       <div class="invalid-feedback">
+        <div>Coupon Id is required</div>
+      </div>
+      <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Discount</label>
+      <input formControlName="discount" type="number" class="form-control" id="exampleInputPassword1" placeholder="Discount"
+      [ngClass]="{'is-invalid': addNewCouponForm.get('discount')?.touched && addNewCouponForm.get('discount')?.invalid}">
+      <div class="invalid-feedback">
+        <div>Discount is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Stock</label>
+        <input formControlName="stock" type="number" class="form-control" id="exampleInputPassword1" placeholder="Stock"
+        [ngClass]="{'is-invalid': addNewCouponForm.get('stock')?.touched && addNewCouponForm.get('stock')?.invalid}">
+        <div class="invalid-feedback">
+            <div>stock is required</div>
+          </div>
+    </div><br>
+    <div class="alert alert-success" *ngIf="isAdded">
+        Added Successfully
+    </div>
+    <button type="submit" class="btn btn-primary">Add Coupon</button>
+  </form>
