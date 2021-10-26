@@ -14,14 +14,14 @@ import { WishlistComponent } from './shopping/components/wishlist/wishlist.compo
 const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'books', component:ListBooksComponent},
-  {path:'book-details', component:BookDetailsComponent},
   {path:'cart',component:CartComponent},
   {path:'checkout',component:CheckoutComponent},
   {path:'confirm',component:ConfirmationComponent},
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
   {path:'reset-password',component:ResetPwComponent},
-  {path:'wishlist',component:WishlistComponent}
+  {path:'wishlist',component:WishlistComponent},
+  {path:'books/:id', component:BookDetailsComponent}
 ];
 
 @NgModule({
