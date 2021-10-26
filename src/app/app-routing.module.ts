@@ -11,6 +11,7 @@ import { CartComponent } from './shopping/components/cart/cart.component';
 import { CheckoutComponent } from './shopping/components/checkout/checkout.component';
 import { ConfirmationComponent } from './shopping/components/confirmation/confirmation.component';
 import { WishlistComponent } from './shopping/components/wishlist/wishlist.component';
+import { BooksListComponent } from './admin/components/manage-books/components/books-list/books-list.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -22,8 +23,13 @@ const routes: Routes = [
   {path:'signup',component:SignupComponent},
   {path:'reset-password',component:ResetPwComponent},
   {path:'wishlist',component:WishlistComponent},
+
   {path:'books/:id', component:BookDetailsComponent},
-  {path:'admin/user-control', component: UserControlComponent}
+  {path:'admin/user-control', component: UserControlComponent},
+
+  {path:'admin/books',component:BooksListComponent},
+  {path:'books/:id', component:BookDetailsComponent}
+
 ];
 
 @NgModule({

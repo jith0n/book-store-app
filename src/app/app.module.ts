@@ -20,7 +20,11 @@ import { WishlistComponent } from './shopping/components/wishlist/wishlist.compo
 import { CartItemComponent } from './shopping/components/cart-item/cart-item.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+
 import { UserControlComponent } from './admin/components/manage-users/components/user-control/user-control.component';
+
+import { BooksListComponent } from './admin/components/manage-books/components/books-list/books-list.component';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +43,8 @@ import { UserControlComponent } from './admin/components/manage-users/components
     MenuComponent,
     BookCardComponent,
     WishlistComponent,
-    CartItemComponent
+    CartItemComponent,
+    BooksListComponent
   ],
   imports: [
     BrowserModule,

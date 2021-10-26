@@ -1,0 +1,160 @@
+<div class="container-fluid" style="margin-top: 100px;margin-bottom: 40px;">
+    <table class="table table-dark table-hover">
+        <thead>
+      <tr>
+        <th scope="col">Book Id</th>
+        <th scope="col">Title</th>
+        <th scope="col">Price</th>
+        <th scope="col">Stock</th>
+        <th scope="col">Position</th>
+        <th scope="col">Status</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+
+      <!-- BookId int identity(101,1) primary key,
+      CategoryId	int foreign key references category(CategoryId),
+      Title varchar(30),
+      ISBN int,
+      Year int,
+      Price float,
+      Description varchar(100),
+      Position int,
+      Status bit,
+      Image varbinary(MAX),
+      Author varchar(20),
+      Stock int -->
+
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of bookList">
+        <th scope="row">{{book.id}}</th>
+        <td>image</td>
+        <td>{{book.name}}</td>
+        <td>{{book.id}}</td>
+        <td>{{book.phone}}</td>
+        <td>{{book.name}}</td>
+        <td><button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editUserModal" (click)="handleEditModalOpen(book)">Edit</button></td>
+        <td><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteUserModal" (click)="handleEditModalOpen(book)">Delete</button></td>
+
+      </tr>
+    </tbody>
+  
+    </table>
+</div>
+
+<div class="modal fade " id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Book Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="background-color: white;"></button>
+              </div>
+              <div class="modal-body bg-dark text-white" *ngIf="dupBookData">
+                <form ngNativeValidate (ngSubmit)=handleUpdateUser()>
+                  <div class="form-group row mb-3">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Title</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" placeholder="Enter name" 
+                      [(ngModel)]="dupBookData.name" name="name" required>
+                    </div>
+                  </div>
+                  <div class="form-group row mb-3">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">ISBN</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" placeholder="Enter Phone"
+                      [(ngModel)]="dupBookData.phone" name="phone" required>
+                    </div>
+                  </div>
+                  <div class="form-group row mb-3">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Description </label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" placeholder="Enter Phone"
+                      [(ngModel)]="dupBookData.phone" name="phone" required>
+                    </div>
+                  </div>
+                  <div class="form-group row mb-3">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Position</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" placeholder="Enter Phone"
+                      [(ngModel)]="dupBookData.phone" name="phone" required>
+                    </div>
+                  </div>
+                  <div class="form-group row mb-3">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Author</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" placeholder="Enter Phone"
+                      [(ngModel)]="dupBookData.phone" name="phone" required>
+                    </div>
+                  </div>
+                  <div class="form-group row mb-3">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Stock</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" placeholder="Enter Phone"
+                      [(ngModel)]="dupBookData.phone" name="phone" required>
+                    </div>
+                  </div>
+                  <div class="form-group row mb-3">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Status</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" placeholder="Enter Phone"
+                      [(ngModel)]="dupBookData.phone" name="phone" required>
+                    </div>
+                  </div>
+                  <div class="form-group row mb-3">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">ISBN</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" placeholder="Enter Phone"
+                      [(ngModel)]="dupBookData.phone" name="phone" required>
+                    </div>
+                  </div>
+                  <div class="form-group row mb-3">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Year</label>
+                    <div class="col-sm-10">
+                      <input type="email" class="form-control" 
+                        placeholder="Enter Email" [(ngModel)]="dupBookData.email" 
+                        name="email" required>
+                    </div>
+                  </div>
+
+                  <div class="alert alert-success" *ngIf="isUpdated">
+                    Updated successfully!
+                  </div>
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade " id="deleteUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Book Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="background-color: white;"></button>
+              </div>
+              <div class="modal-body bg-dark text-white" *ngIf="dupBookData">
+                <form ngNativeValidate (ngSubmit)=handleDeleteUser() >
+                    <h4>Are You Sure You Want to Delete This Book ?</h4>
+         
+
+                  <div class="alert alert-success" *ngIf="isUpdated">
+                    Updated successfully!
+                  </div>
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger">Delete Book</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
