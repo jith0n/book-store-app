@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { UserControlComponent } from './admin/components/manage-users/components/user-control/user-control.component';
 import { LoginComponent } from './auth/components/login/login.component';
 import { ResetPwComponent } from './auth/components/reset-pw/reset-pw.component';
 import { SignupComponent } from './auth/components/signup/signup.component';
@@ -21,7 +22,8 @@ const routes: Routes = [
   {path:'signup',component:SignupComponent},
   {path:'reset-password',component:ResetPwComponent},
   {path:'wishlist',component:WishlistComponent},
-  {path:'books/:id', component:BookDetailsComponent}
+  {path:'books/:id', component:BookDetailsComponent},
+  {path:'admin/user-control', component: UserControlComponent}
 ];
 
 @NgModule({

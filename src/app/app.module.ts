@@ -20,6 +20,7 @@ import { WishlistComponent } from './shopping/components/wishlist/wishlist.compo
 import { CartItemComponent } from './shopping/components/cart-item/cart-item.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { UserControlComponent } from './admin/components/manage-users/components/user-control/user-control.component';
 
 @NgModule({
   declarations: [
