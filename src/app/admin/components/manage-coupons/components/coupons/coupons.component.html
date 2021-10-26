@@ -1,0 +1,52 @@
+<div class="container" style="margin-top: 100px;">
+    <h2 class="text-center mb-4">Coupon List<button class="btn btn-primary mx-4" routerLink="/admin/coupons/add">Add New Coupon</button></h2>
+    <table class="table table-hover table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Coupon Id</th>
+          <th scope="col">Discount</th>
+          <th scope="col">Stock</th>
+          <th scope="col">#</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let coupon of couponList">
+          <th scope="row">{{coupon.id}}</th>
+          <td>{{coupon.disc}}</td>
+          <td>{{coupon.stock}}</td>
+          <td><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="handleDelete(coupon)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button> -->
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Are you are sure to delete Coupon?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- body comes here -->
+          <p>Coupon Id: {{delCoupon.id}}</p>
+          <p>Coupon Discount: {{delCoupon.disc}}</p>
+          <p>Coupon Stock: {{delCoupon.stock}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger" (click)="handleDeleteCouponConfirm()">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
