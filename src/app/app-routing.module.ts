@@ -1,8 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { AddCouponComponent } from './admin/components/manage-coupons/components/add-coupon/add-coupon.component';
 import { CouponsComponent } from './admin/components/manage-coupons/components/coupons/coupons.component';
 import { OrdersComponent } from './admin/components/manage-orders/components/orders/orders.component';
+
+import { UserControlComponent } from './admin/components/manage-users/components/user-control/user-control.component';
+
 import { LoginComponent } from './auth/components/login/login.component';
 import { ResetPwComponent } from './auth/components/reset-pw/reset-pw.component';
 import { SignupComponent } from './auth/components/signup/signup.component';
@@ -25,9 +29,16 @@ const routes: Routes = [
   {path:'reset-password',component:ResetPwComponent},
   {path:'wishlist',component:WishlistComponent},
   {path:'books/:id', component:BookDetailsComponent},
+
   {path: 'admin/coupons', component:CouponsComponent},
   {path: 'admin/coupons/add', component:AddCouponComponent},
   {path: 'admin/orders',component:OrdersComponent}
+
+
+
+
+  {path:'admin/user-control', component: UserControlComponent}
+
 ];
 
 @NgModule({
