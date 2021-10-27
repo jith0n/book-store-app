@@ -53,7 +53,8 @@ import { UserControlComponent } from './admin/components/manage-users/components
     BooksListComponent,
     CouponsComponent,
     AddCouponComponent,
-    OrdersComponent
+    OrdersComponent,
+    UserControlComponent
   ],
   imports: [
     BrowserModule,
