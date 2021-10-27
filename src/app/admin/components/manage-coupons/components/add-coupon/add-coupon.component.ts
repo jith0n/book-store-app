@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CouponService } from '../../services/coupon.service';
 
 @Component({
   selector: 'app-add-coupon',
@@ -11,19 +12,28 @@ export class AddCouponComponent implements OnInit {
   isAdded =false;
 
   addNewCouponForm = new FormGroup({
-    couponId : new FormControl('NEW50',Validators.required),
-    discount : new FormControl('50',Validators.required),
-    stock : new FormControl('5',Validators.required)
+    couponId : new FormControl('',Validators.required),
+    discount : new FormControl('',Validators.required),
+    stock : new FormControl('',Validators.required)
   })
 
-  constructor() { }
+  constructor( private couponService : CouponService) { }
 
   ngOnInit(): void {
   }
 
   handleAddCoupon():void{
-    alert("submitting");
+    this.isAdded = false;
+    //alert("submitting");
     console.log(this.addNewCouponForm.value);
+    this.couponService.addCoupon(this.addNewCouponForm.value)
+      .subscribe((res : any) =>{
+        console.log(res);
+        alert("submitted");
+        if(res && res.id==11){
+          this.isAdded = true;
+        }
+      })
   }
 
 }

@@ -9,11 +9,11 @@
           <th scope="col">#</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody *ngIf="couponList">
         <tr *ngFor="let coupon of couponList">
           <th scope="row">{{coupon.id}}</th>
-          <td>{{coupon.disc}}</td>
-          <td>{{coupon.stock}}</td>
+          <td>{{coupon.name}}</td>
+          <td>{{coupon.email}}</td>
           <td><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="handleDelete(coupon)">
               Delete
             </button>
@@ -37,11 +37,14 @@
           <h5 class="modal-title" id="exampleModalLabel">Are you are sure to delete Coupon?</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" *ngIf="delCoupon">
           <!-- body comes here -->
           <p>Coupon Id: {{delCoupon.id}}</p>
-          <p>Coupon Discount: {{delCoupon.disc}}</p>
-          <p>Coupon Stock: {{delCoupon.stock}}</p>
+          <p>Coupon Discount: {{delCoupon.name}}</p>
+          <p>Coupon Stock: {{delCoupon.email}}</p>
+        </div>
+        <div class="alert alert-success" *ngIf="isDeleted">
+          Deleted Successfully
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
