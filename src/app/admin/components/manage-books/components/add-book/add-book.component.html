@@ -1,0 +1,146 @@
+<div class="container" style="margin-top:100px;margin-bottom: 40px;">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Add New Book</h1>
+        <!-- <a routerLink="/books"><button class="btn btn-dark">Go Back</button></a> -->
+      </div>
+  
+      <!-- Step 3: patchup form tag with the FormGroup in ts -->
+      <form class="col-md-6 offset-md-3" [formGroup]="addBookForm" (ngSubmit)="handleAddBook()">
+        <!-- step 7: work on submission flow -- ref ts for step 8-->
+        <div class="form-group row mb-3">
+          <label for="staticTitle" class="col-sm-2 col-form-label">Title</label>
+          <div class="col-sm-10">
+            <!-- step 4: patchup form fields with the FormControl in ts -->
+            <!-- goto ts for step 5-->
+            <input type="text" class="form-control"
+            [ngClass]="{'is-invalid':addBookForm.get('title')?.touched && addBookForm.get('title')?.invalid}" 
+            placeholder="Enter Book Title" formControlName="title"
+            />
+            <!-- step6: displaying validation related msg -->
+            <div class="invalid-feedback">
+              <div *ngIf="addBookForm.get('title')?.errors?.required">Title is required</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+          <label for="staticIsbn" class="col-sm-2 col-form-label">ISBN</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" 
+            [ngClass]="{'is-invalid':addBookForm.get('isbn')?.touched && addBookForm.get('isbn')?.invalid}" placeholder="Enter Book ISBN" 
+            formControlName="isbn"
+            />
+            <div class="invalid-feedback">
+              <div *ngIf="addBookForm.get('isbn')?.errors?.required">ISBN is required</div>
+              
+            </div>
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+          <label for="staticYear" class="col-sm-2 col-form-label">Year</label>
+          <div class="col-sm-10">
+            <input type="number" class="form-control"
+            [ngClass]="{'is-invalid':addBookForm.get('year')?.touched && addBookForm.get('year')?.invalid}"  placeholder="Enter Book Release Year" formControlName="year" 
+             />
+            <div class="invalid-feedback">
+                <div>Enter Valid Year</div>
+              <div *ngIf="addBookForm.get('year')?.errors?.required">Year is required</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+            <label for="staticPrice" class="col-sm-2 col-form-label">Price</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" 
+              [ngClass]="{'is-invalid':addBookForm.get('price')?.touched && addBookForm.get('price')?.invalid}" placeholder="Enter Book Price" 
+              formControlName="price"
+              />
+              <div class="invalid-feedback">
+                <div *ngIf="addBookForm.get('price')?.errors?.required">Price is required</div>
+               
+                
+              </div>
+            </div>
+          </div>
+          <div class="form-group row mb-3">
+            <label for="staticDescription" class="col-sm-2 col-form-label">Description</label>
+            <div class="col-sm-10">
+              <textarea type="text" class="form-control" 
+              [ngClass]="{'is-invalid':addBookForm.get('description')?.touched && addBookForm.get('description')?.invalid}" placeholder="Enter Book Description" 
+              formControlName="description"
+              ></textarea>
+              <div class="invalid-feedback">
+                
+                <div *ngIf="addBookForm.get('description')?.errors?.required">Description is required</div>
+                
+              </div>
+            </div>
+          </div>
+          <div class="form-group row mb-3">
+            <label for="staticPosition" class="col-sm-2 col-form-label">Position</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" 
+              [ngClass]="{'is-invalid':addBookForm.get('position')?.touched && addBookForm.get('position')?.invalid}" placeholder="Enter Position" 
+              formControlName="position"
+              />
+              <div class="invalid-feedback">
+                <div *ngIf="addBookForm.get('position')?.errors?.required">Position is required</div>
+                
+              </div>
+            </div>
+          </div>
+          <div class="form-group row mb-3">
+            <label for="staticPhone" class="col-sm-2 col-form-label">Status</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" 
+              [ngClass]="{'is-invalid':addBookForm.get('status')?.touched && addBookForm.get('status')?.invalid}" placeholder="Enter Status" 
+              formControlName="status"
+              />
+              <div class="invalid-feedback">
+                <div *ngIf="addBookForm.get('status')?.errors?.required">Status is required</div>
+                
+              </div>
+            </div>
+          </div>
+          <div class="form-group row mb-3">
+            <label for="staticAuthor" class="col-sm-2 col-form-label">Author</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" 
+              [ngClass]="{'is-invalid':addBookForm.get('author')?.touched && addBookForm.get('author')?.invalid}" placeholder="Enter Author Name" 
+              formControlName="author"
+              />
+              <div class="invalid-feedback">
+                <div *ngIf="addBookForm.get('author')?.errors?.required">Author is required</div>
+                
+              </div>
+            </div>
+          </div>
+          <div class="form-group row mb-3">
+            <label for="staticStock" class="col-sm-2 col-form-label">Stock</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" 
+              [ngClass]="{'is-invalid':addBookForm.get('stock')?.touched && addBookForm.get('stock')?.invalid}" placeholder="Enter Book Stock" 
+              formControlName="stock"
+              />
+              <div class="invalid-feedback">
+                <div *ngIf="addBookForm.get('stock')?.errors?.required">Stock is required</div>
+
+                
+              </div>
+            </div>
+          </div>
+
+  
+        <div class="alert alert-success" *ngIf="isSaved">
+          Saved Successfully
+        </div>
+  
+        <div class="form-group row">
+          <div class="col-sm-10 offset-sm-2">
+            <button type="submit" class="btn btn-primary" [disabled]="addBookForm.invalid">Submit</button>
+            <button type="reset" class="btn btn-danger mx-3">Clear</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>

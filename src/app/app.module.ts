@@ -30,6 +30,7 @@ import { AddCouponComponent } from './admin/components/manage-coupons/components
 import { OrdersComponent } from './admin/components/manage-orders/components/orders/orders.component';
 
 import { UserControlComponent } from './admin/components/manage-users/components/user-control/user-control.component';
+import { AddBookComponent } from './admin/components/manage-books/components/add-book/add-book.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { UserControlComponent } from './admin/components/manage-users/components
     BooksListComponent,
     CouponsComponent,
     AddCouponComponent,
-    OrdersComponent
+    OrdersComponent,
+    AddBookComponent
   ],
   imports: [
     BrowserModule,
