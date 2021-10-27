@@ -29,5 +29,5 @@
     <div class="alert alert-success" *ngIf="isAdded">
         Added Successfully
     </div>
-    <button type="submit" class="btn btn-primary">Add Coupon</button>
+    <button type="submit" class="btn btn-primary" [disabled]="addNewCouponForm.invalid">Add Coupon</button>
   </form>

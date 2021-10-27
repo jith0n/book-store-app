@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CouponService } from '../../services/coupon.service';
 
 @Component({
   selector: 'app-coupons',
@@ -8,26 +9,35 @@ import { Component, OnInit } from '@angular/core';
 export class CouponsComponent implements OnInit {
 
   delCoupon :any = null;
+  isDeleted = false;
+  couponList:any[] = [];
 
-  couponList = [{id:"chd", disc:39,stock:39},
-  {id:"dhdh",disc:50,stock:34},
-  {id:"djjf",disc:45,stock:34},
-  {id:"dheoddh",disc:50,stock:34},
-  {id:"sjc",disc:50,stock:34}
-];
-
-  constructor() { }
+  constructor( private couponService : CouponService) { }
 
   ngOnInit(): void {
+    this.couponService.getCoupons()
+    .subscribe ( (res : any) =>{
+      console.log(res);
+      this.couponList = res;
+    })
   }
 
 
   handleDelete(coupon:any){
+    this.isDeleted = false;
     console.log(coupon);
-    this.delCoupon = {...coupon};
+    this.delCoupon = coupon;
   }
 
   handleDeleteCouponConfirm(){
-    
+    console.log(this.delCoupon);
+    this.couponService.deleteCoupon(this.delCoupon.id)
+      .subscribe((res : any) =>{
+        console.log(res);
+        if (res){
+          this.isDeleted = true;
+          //alert("deleted");
+        }
+      })
   }
 }

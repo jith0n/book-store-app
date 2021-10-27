@@ -38,4 +38,14 @@ export class BooksService {
         return res;
       }));
   }
+
+  createBook(formData: any): any{
+    console.log(formData);
+
+    return this.http.post('https://jsonplaceholder.typicode.com/users',formData)
+      .pipe(map((res: any) => {
+        console.log(res);
+        return res;
+      }));
+  }
 }

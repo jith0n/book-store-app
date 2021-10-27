@@ -10,11 +10,11 @@
                     <th scope="col">Price</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
+            <tbody *ngIf="orderList">
+                <tr *ngFor="let order of orderList">
+                    <th scope="row">{{order.id}}</th>
+                    <td>{{order.name}}</td>
+                    <td>{{order.email}}</td>
                     <!-- <td><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Delete
                     </button>

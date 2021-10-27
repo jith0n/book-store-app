@@ -18,6 +18,7 @@ import { CheckoutComponent } from './shopping/components/checkout/checkout.compo
 import { ConfirmationComponent } from './shopping/components/confirmation/confirmation.component';
 import { WishlistComponent } from './shopping/components/wishlist/wishlist.component';
 import { BooksListComponent } from './admin/components/manage-books/components/books-list/books-list.component';
+import { AddBookComponent } from './admin/components/manage-books/components/add-book/add-book.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -34,12 +35,11 @@ const routes: Routes = [
   {path:'admin/user-control', component: UserControlComponent},
 
   {path:'admin/books',component:BooksListComponent},
-  {path:'books/:id', component:BookDetailsComponent},
+  {path:'admin/books/add',component:AddBookComponent},
 
   {path: 'admin/coupons', component:CouponsComponent},
   {path: 'admin/coupons/add', component:AddCouponComponent},
   {path: 'admin/orders',component:OrdersComponent},
-
 
 
 
