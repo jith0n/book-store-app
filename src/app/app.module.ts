@@ -55,7 +55,11 @@ import { AddBookComponent } from './admin/components/manage-books/components/add
     CouponsComponent,
     AddCouponComponent,
     OrdersComponent,
+
+    UserControlComponent,
+
     AddBookComponent
+
   ],
   imports: [
     BrowserModule,
