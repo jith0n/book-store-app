@@ -16,15 +16,7 @@
                         <td>{{user.title}}</td>
                         <td>
                             <label class="switch"> 
-                                 <!-- <div *ngIf="checkStatus(user.completed)"> 
-                                     <input type="hidden" value="false" name="statuscheck"> 
-                                    <input type="checkbox" name="statuscheck"  checked={{user.completed}}> 
-                                 </div> 
-                                 <ng-template #Inactive>
-                                     <input type="hidden" value="false" name="statuscheck">
-                                    <input type="checkbox" name="statuscheck"  >
-                                </ng-template>  -->
-                                <input type="checkbox" checked="false">
+                                <input type="checkbox" [checked]=user.completed>
                                  <span class="slider round"></span>
                              </label>
 
