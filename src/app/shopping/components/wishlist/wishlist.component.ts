@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CartItemsService } from 'src/app/shared/services/cart-items.service';
 
 @Component({
   selector: 'app-wishlist',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WishlistComponent implements OnInit {
 
-  constructor() { }
+  wishItemList: any[] = [];
+
+  constructor(private wishItemService: CartItemsService, private updateCartService: CartItemsService) { }
 
   ngOnInit(): void {
-  }
+    this.updateCartService.latestWishItemsList.subscribe((cartItems: any) => {
+      // console.log(cartItems);
+       this.wishItemList = cartItems;
+     })
+
+}
+
+handleAddtoCart(book: any): void{
+  this.updateCartService.updateCart(book);
+}
 
 }

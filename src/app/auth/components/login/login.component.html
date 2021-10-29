@@ -5,16 +5,16 @@
 <main class="form-signin py-5">
   <div class="container-fluid">
    <div class="card">
-      <form>
+      <form #f = "ngForm" (ngSubmit)="handleLogin(f)">
           <img class="logoicon mb-4" src="../../../../assets/images/logo.png" alt="" width="72" height="57">
           <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"ngModel name="email">
             <label class="floatuser" for="floatingInput">Email address</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" ngModel name="password">
             <label class="floatuser" for="floatingPassword">Password</label>
           </div>
 
