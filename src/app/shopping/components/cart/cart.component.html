@@ -9,14 +9,22 @@
                     <div class="col align-self-center text-right text-muted">3 items</div>
                 </div>
             </div>
-            <app-cart-item></app-cart-item>
-            <app-cart-item></app-cart-item>
-            <app-cart-item></app-cart-item>
-            <app-cart-item></app-cart-item>
-                        <app-cart-item></app-cart-item>
-            <app-cart-item></app-cart-item>
-            <app-cart-item></app-cart-item>
-            <app-cart-item></app-cart-item>
+            <div *ngFor="let one of cartItemList">
+                <div class="row border-top border-bottom" style="padding: 10px;">
+                    <div class="row main align-items-center">
+                        <div class="col-2"><img class="img-fluid" src={{one.url}}></div>
+                        <div class="col-4">
+                            <div class="row text-muted">{{one.title}}</div>
+                            <div class="row">{{one.id}}</div>
+                        </div>
+                        <div class="btn-group col-2" role="group" aria-label="Basic example">           
+                            <input type="number" value=1 style="width: 50px; margin:auto;">
+                          </div>
+                        <div class="col-4">&#8377; 44.00 <span class="close">&#10005;</span></div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="back-to-shop"><a href="#">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
         </div>
         <div class="col-md-4 summary">

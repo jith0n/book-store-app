@@ -19,17 +19,24 @@ import { ConfirmationComponent } from './shopping/components/confirmation/confir
 import { WishlistComponent } from './shopping/components/wishlist/wishlist.component';
 import { BooksListComponent } from './admin/components/manage-books/components/books-list/books-list.component';
 import { AddBookComponent } from './admin/components/manage-books/components/add-book/add-book.component';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
-  {path:'books', component:ListBooksComponent},
-  {path:'cart',component:CartComponent},
-  {path:'checkout',component:CheckoutComponent},
+  {path:'books',component:ListBooksComponent},
+  {path:'cart',component: CartComponent,
+   canActivate: [AuthGuard]
+  },
+  {path:'checkout', component:CheckoutComponent,
+   canActivate: [AuthGuard]
+  },
   {path:'confirm',component:ConfirmationComponent},
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
   {path:'reset-password',component:ResetPwComponent},
-  {path:'wishlist',component:WishlistComponent},
+  {path:'wishlist',component:WishlistComponent,
+   canActivate: [AuthGuard]
+  },
 
   {path:'books/:id', component:BookDetailsComponent},
   {path:'admin/user-control', component: UserControlComponent},
