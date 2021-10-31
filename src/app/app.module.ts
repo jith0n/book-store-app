@@ -19,7 +19,7 @@ import { BookCardComponent } from './books/components/book-card/book-card.compon
 import { WishlistComponent } from './shopping/components/wishlist/wishlist.component';
 import { CartItemComponent } from './shopping/components/cart-item/cart-item.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 
@@ -31,6 +31,9 @@ import { OrdersComponent } from './admin/components/manage-orders/components/ord
 
 import { UserControlComponent } from './admin/components/manage-users/components/user-control/user-control.component';
 import { AddBookComponent } from './admin/components/manage-books/components/add-book/add-book.component';
+import { AuthService } from './auth/services/auth.service';
+import { AuthGuard } from './shared/guards/auth.guard';
+import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 
 
 @NgModule({
@@ -68,7 +71,11 @@ import { AddBookComponent } from './admin/components/manage-books/components/add
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService,AuthGuard,{
+    provide:HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

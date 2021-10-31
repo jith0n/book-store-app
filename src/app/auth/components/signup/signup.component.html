@@ -1,41 +1,41 @@
-<body class="bg">
+<div class="bg">
 <section class="text-center" style="background:rgba(255, 255, 255, 0);">
     
-    <main class="form-signin py-5">
+    <div class="form-signin" style="padding-top:100px;padding-bottom:40px">
       <div class="container">
         <div class="card">
-          <form>
+          <form #f="ngForm" (ngSubmit)="handleRegister(f)">
               <img class="logoicon mb-4" src="../../../../assets/images/logo.png" alt="" width="72" height="57">
               <h1 class="h3 mb-3 fw-normal">Create New Account</h1>
           
               <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com">
+                <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com" name="Email" #Email="ngModel" [(ngModel)]="user.Email" required>
                 <label for="floatingEmail" style="color: black;">Email address</label>
               </div>
               <div class="form-floating mb-3">
-                  <input type="text" class="form-control" id="floatingUserName" placeholder="Username">
+                  <input type="text" class="form-control" id="floatingUserName" placeholder="Username" name="UserName" #UserName="ngModel" [(ngModel)]="user.UserName" required>
                   <label for="floatingUserName" style="color: black;">Username</label>
                 </div>
               <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="floatingPassword1" placeholder="Set Password">
+                <input type="password" class="form-control" id="floatingPassword1" placeholder="Set Password" name="Password" #Password="ngModel" [(ngModel)]="user.Password" required>
                 <label for="floatingPassword1" style="color: black;">Set Password</label>
               </div>
               <div class="form-floating mb-3">
-                  <input type="password" class="form-control" id="floatingPassword2" placeholder="Confirm Password">
+                  <input type="password" class="form-control" id="floatingPassword2" placeholder="Confirm Password" name="PasswordConfirm" required>
                   <label for="floatingPassword2" style="color: black;">Confirm Password</label>
                 </div>
           
               <div class="checkbox mb-3">
                 <label>
-                  <input type="checkbox" value="remember-me"> Accept Terms and Conditions
+                  <input type="checkbox" value="accept-conditions" required> Accept Terms and Conditions
                 </label>
               </div>
-              <button class="w-100 btn btn-lg btn-primary" type="submit">Sign Up</button>
+              <button [disabled]="!f.valid" class="w-100 btn btn-lg btn-primary" type="submit">Sign Up</button>
               <p class="mt-3">Already a user?<a href="/login">Sign In</a></p>
 
             </form>
         </div>
       </div>
-    </main>
+    </div>
     </section>
-  </body>
+  </div>

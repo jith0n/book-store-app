@@ -26,7 +26,7 @@ export class ListBooksComponent implements OnInit {
   }
 
   handleAddtoCart(book: any): void{
-    if(this.authService.isAuth()){
+    if(localStorage.getItem("authToken")!=null){
       this.updateCartService.updateCart(book);
     }else{
     this.router.navigate(['login'], { queryParams: { returnURL: '/books' }});
@@ -34,7 +34,7 @@ export class ListBooksComponent implements OnInit {
   }
 
   handleAddtoWishList(book: any): void{
-    if(this.authService.isAuth()){
+    if(localStorage.getItem("authToken")!=null){
       this.updateCartService.updateWishlist(book);
     }else{
       this.router.navigate(['login'], { queryParams: { returnURL: '/books' }});

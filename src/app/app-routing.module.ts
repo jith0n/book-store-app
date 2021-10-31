@@ -41,16 +41,16 @@ const routes: Routes = [
   {path:'books/:id', component:BookDetailsComponent},
   {path:'admin/user-control', component: UserControlComponent},
 
-  {path:'admin/books',component:BooksListComponent},
+  {path:'admin/books',component:BooksListComponent,
+    canActivate: [AuthGuard]},
   {path:'admin/books/add',component:AddBookComponent},
 
   {path: 'admin/coupons', component:CouponsComponent},
   {path: 'admin/coupons/add', component:AddCouponComponent},
-  {path: 'admin/orders',component:OrdersComponent},
+  {path: 'admin/orders',component:OrdersComponent}
 
 
 
-  {path:'admin/user-control', component: UserControlComponent}
 
 ];
 
