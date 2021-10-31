@@ -34,6 +34,7 @@ import { AddBookComponent } from './admin/components/manage-books/components/add
 import { AuthService } from './auth/services/auth.service';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
+import { ForbiddenComponent } from './auth/components/forbidden/forbidden.component';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 
     UserControlComponent,
 
-    AddBookComponent
+    AddBookComponent,
+      ForbiddenComponent
 
   ],
   imports: [

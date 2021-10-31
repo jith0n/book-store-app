@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
     
     this.authService.userAuthentication(userName,password).subscribe((data : any)=>{
       localStorage.setItem('authToken',data.access_token);
+      localStorage.setItem('userRoles',data.role);
       this.router.navigateByUrl(this.activatedRoute.snapshot.queryParams['returnURL']);
     },
     (err: HttpErrorResponse)=>{
