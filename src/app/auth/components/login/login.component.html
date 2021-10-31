@@ -1,20 +1,20 @@
-<body class="gradient-custom">
+<div class="gradient-custom">
 
 <section class="text-center" style="background:rgba(255, 255, 255, 0);">
     
-<main class="form-signin py-5">
+<div class="form-signin" style="padding-top:100px;padding-bottom: 40px;">
   <div class="container-fluid">
    <div class="card">
-      <form #f = "ngForm" (ngSubmit)="handleLogin(f)">
+      <form #f = "ngForm" (ngSubmit)="handleLogin(UserName.value,Password.value)">
           <img class="logoicon mb-4" src="../../../../assets/images/logo.png" alt="" width="72" height="57">
           <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"ngModel name="email">
-            <label class="floatuser" for="floatingInput">Email address</label>
+            <input type="text" class="form-control" id="floatingInput" placeholder="Username" ngModel name="Username" #UserName>
+            <label class="floatuser" for="floatingInput">Username</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" ngModel name="password">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" ngModel name="Password" #Password>
             <label class="floatuser" for="floatingPassword">Password</label>
           </div>
 
@@ -28,6 +28,6 @@
         </form>
       </div>
      </div>
- </main>
+    </div>
 </section>
-</body>
+</div>

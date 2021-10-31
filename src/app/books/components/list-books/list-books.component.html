@@ -4,9 +4,9 @@
                     aria-label="Search"><button class="my-5 btn btn-outline-success" type="submit">Search</button></form>
     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-3">
     
-        <div class="col" id="bookCard" *ngFor="let book of bookList">
-            <div class="card shadow-sm">
-                <img src="{{book.url}}" alt="Book test" routerLink="/books/{{book.id}}" style="cursor:pointer;" >
+        <div class="col"  *ngFor="let book of bookList">
+            <div class="card text-light" id="bookCard">
+                <img src="{{book.url}}" alt="Book test" routerLink="/books/{{book.id}}">
               <div class="card-body">
                 <p class="card-text fw-bold h4">{{book.title}}</p>
                 <p class="h6 fst-italic">Author Name</p>
