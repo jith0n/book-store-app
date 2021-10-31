@@ -13,7 +13,9 @@ export class CartItemsService {
     {
     id: 3,
     url: "https://via.placeholder.com/600/92c952",
-    title: 'sdjfbdfjsilk'
+    title: 'sdjfbdfjsilk',
+    price:'',
+    category:''
     }
   ];
 
@@ -21,7 +23,9 @@ export class CartItemsService {
     {
       id: 3,
       url: "https://via.placeholder.com/600/92c952",
-      title: 'sdjfbdfjsilk'
+      title: 'sdjfbdfjsilk',
+      price:'',
+      category:''
     }
   ]
 

@@ -11,6 +11,7 @@ export class BooksListComponent implements OnInit {
   bookList: any[]=[];
   dupBookData: any ;
   isUpdated = false;
+  isDeleted = false;
   constructor(private bookService: BooksService) { }
 
   ngOnInit(): void {
@@ -32,7 +33,7 @@ handleUpdateUser(): void{
   this.bookService.updateBook(this.dupBookData)
     .subscribe( (res: any) => {
       console.log(res);
-      if(res && res.id){
+      if(res){
         this.isUpdated = true;
         this.bookList = res;
       }
@@ -40,14 +41,26 @@ handleUpdateUser(): void{
 }
 
 handleDeleteUser(): void{
+  this.isDeleted = false;
   console.log(this.dupBookData); // submittable formdata
 
-  this.bookService.deleteBook(this.dupBookData)
+  // this.bookService.deleteBook(this.dupBookData)
+  //   .subscribe( (res: any) => {
+  //     console.log(res);
+  //     if(res && res.id){
+  //       this.isUpdated = true;
+  //       this.bookList = res;
+  //     }
+  //   });
+}
+
+handleConfirmDelete(bookid:number):void{
+  this.bookService.deleteBook(bookid)
     .subscribe( (res: any) => {
       console.log(res);
-      if(res && res.id){
-        this.isUpdated = true;
-        this.bookList = res;
+      if(res){
+        this.isDeleted = true;
+        //this.bookList = res;
       }
     });
 }

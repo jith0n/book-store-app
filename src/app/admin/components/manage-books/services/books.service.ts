@@ -7,11 +7,29 @@ import { map } from 'rxjs/operators';
 })
 export class BooksService {
 
+  apiName = "https://localhost:44332/api/books/";
+
   constructor(private http: HttpClient) { }
+
+  uploadImage(imgFile:any):any{
+    console.log(imgFile);
+    //create form data
+    const formData = new FormData();
+
+    //store form as "file" with file data
+    formData.append("file", imgFile,imgFile.name);
+
+    //make http post request with form data
+    return this.http.post('https://localhost:44332/api/upload/image',formData)
+      .pipe(map((res: any) => {
+        console.log(res);
+        return res;
+      }));
+  }
 
   getBooks(): any{
     console.log("inside serivices");
-    return this.http.get("https://jsonplaceholder.typicode.com/users")
+    return this.http.get(this.apiName)
       .pipe(map((res: any)=>{
         console.log(res);
         return res;
@@ -21,7 +39,7 @@ export class BooksService {
 
   updateBook(bookData: any): any{
     console.log("inside serivices");
-    let bookIdUrl = `https://jsonplaceholder.typicode.com/photos/${bookData.id}`;
+    let bookIdUrl = this.apiName+bookData.id;
     return this.http.put(bookIdUrl,bookData)
       .pipe(map((res: any)=>{
         console.log(res);
@@ -29,9 +47,9 @@ export class BooksService {
       }));
   }
 
-  deleteBook(bookId: string | null): any{
+  deleteBook(bookId: number | null): any{
     console.log("inside serivices");
-    let bookIdUrl = `https://jsonplaceholder.typicode.com/photos/${bookId}`;
+    let bookIdUrl = this.apiName+bookId;
     return this.http.delete(bookIdUrl)
       .pipe(map((res: any)=>{
         console.log(res);
@@ -42,7 +60,7 @@ export class BooksService {
   createBook(formData: any): any{
     console.log(formData);
 
-    return this.http.post('https://jsonplaceholder.typicode.com/users',formData)
+    return this.http.post("https://localhost:44332/api/books",formData)
       .pipe(map((res: any) => {
         console.log(res);
         return res;
