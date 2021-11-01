@@ -9,7 +9,7 @@ import { User } from 'src/app/shared/models/user';
 })
 export class AuthService {
 
-  readonly rootUrl = 'https://localhost:44332'; //api address
+  readonly rootUrl = 'https://localhost:44325'; //api address
   
   constructor(private http: HttpClient,private router: Router) { }
 

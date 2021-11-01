@@ -16,13 +16,14 @@ export class HeaderComponent implements OnInit {
   }
 
   isLoggedIn(){
-    if(localStorage.getItem("authToken")!=null)
+    if(localStorage.getItem('authToken')!=null)
       return false;
     else
       return true;
   }
 
   Logout() {
+    localStorage.removeItem('userRoles');
     localStorage.removeItem('authToken');
     this.router.navigate(['login']);
   }
