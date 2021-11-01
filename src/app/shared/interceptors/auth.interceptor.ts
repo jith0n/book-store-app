@@ -25,10 +25,7 @@ export class AuthInterceptor implements HttpInterceptor {
       const clonedRequest = request.clone({
         headers: request.headers.set("Authorization","Bearer "+localStorage.getItem("authToken"))
       });
-      // this.authService.getUserClaims().subscribe((data: any) => {
-      //   this.userClaims = data;});
-      //   if(this.userClaims!=null){
-      //   localStorage.setItem("Id",this.userClaims.Id);}
+        
 
         return next.handle(clonedRequest).pipe(
           tap(

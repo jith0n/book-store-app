@@ -46,18 +46,19 @@ export class AuthService {
     var data = "username=" + userName + "&password=" + password + "&grant_type=password";
     var reqHeader = new HttpHeaders({ 'Content-Type': 'application/x-www-urlencoded','No-Auth':'True' });
 
-    let result = this.http.post(this.rootUrl + '/token', data, { headers: reqHeader });
-    if(result){
-        let userClaims: any;
-            this.getUserClaims().subscribe((data: any) => {
-        userClaims = data;});
-        if(userClaims!=null){
-        localStorage.setItem("Id",userClaims.Id);}
-    }
-    return result;
+    return this.http.post(this.rootUrl + '/token', data, { headers: reqHeader });
+    // if(result){
+    //     let userClaims: any;
+    //         this.getUserClaims().subscribe((data: any) => {
+    //     userClaims = data;});
+    //     if(userClaims!=null){
+    //     localStorage.setItem("Id",userClaims.Id);}
+    // }
+    // return result;
   }
 
   getUserClaims(){
+    
     return  this.http.get(this.rootUrl+'/api/GetUserClaims');
    }
 

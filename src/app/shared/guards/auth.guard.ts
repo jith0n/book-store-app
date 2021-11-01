@@ -17,10 +17,11 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): boolean{
       console.log("inside gaurd");
       if(localStorage.getItem("authToken")!=null){
-        //this.authService.getUserClaims().subscribe((data: any) => {
-          //this.userClaims = data;});
-          //if(this.userClaims!=null){
-            //localStorage.setItem("Id",this.userClaims.Id);
+        // let userClaims: any;
+        // this.authService.getUserClaims().subscribe((data: any) => {
+        // userClaims = data;});
+          
+        //     localStorage.setItem("Id",userClaims.Id);
 
             
             let roles = next.data["roles"] as Array<string>;
