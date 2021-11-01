@@ -34,6 +34,7 @@ import { AddBookComponent } from './admin/components/manage-books/components/add
 import { AuthService } from './auth/services/auth.service';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
+import { SearchFilterPipe } from './shared/pipes/search-filter.pipe';
 
 
 @NgModule({
@@ -58,10 +59,11 @@ import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
     CouponsComponent,
     AddCouponComponent,
     OrdersComponent,
-
+    SearchFilterPipe,
     UserControlComponent,
 
-    AddBookComponent
+    AddBookComponent,
+      SearchFilterPipe
 
   ],
   imports: [
