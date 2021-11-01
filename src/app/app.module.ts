@@ -35,6 +35,7 @@ import { AuthService } from './auth/services/auth.service';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { SearchFilterPipe } from './shared/pipes/search-filter.pipe';
+import { ForbiddenComponent } from './auth/components/forbidden/forbidden.component';
 
 
 @NgModule({
@@ -63,7 +64,11 @@ import { SearchFilterPipe } from './shared/pipes/search-filter.pipe';
     UserControlComponent,
 
     AddBookComponent,
-      SearchFilterPipe
+ 
+      SearchFilterPipe,
+
+      ForbiddenComponent
+
 
   ],
   imports: [

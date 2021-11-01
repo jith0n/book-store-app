@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +8,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  userClaims: any;
 
-  constructor() { }
+  constructor(private authService: AuthService,private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  isLoggedIn(){
+    if(localStorage.getItem("authToken")!=null)
+      return false;
+    else
+      return true;
+  }
+
+  Logout() {
+    localStorage.removeItem('authToken');
+    this.router.navigate(['login']);
+  }
+
+  isAdmin(){
+    if(this.authService.roleMatch(["Admin"]))
+      return true;
+    else
+      return false
+  }
 }

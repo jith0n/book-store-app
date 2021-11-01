@@ -29,7 +29,7 @@ export class SignupComponent implements OnInit {
   }
 
   handleRegister(form: NgForm) {
-    this.authService.registerUser(form.value)
+    this.authService.registerUser(form.value,["Customer"])
       .subscribe((data: any) => {
         if (data.Succeeded == true) {
           this.resetForm(form);

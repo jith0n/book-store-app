@@ -1,51 +1,92 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
 
-    <div class="container-fluid">
+        <div class="container-fluid">
 
-        <a class="navbar-brand" href="#"><img src="../../../../assets/images/logo.png" alt="logo"
-                style="width: 40px;margin-left: 15%;"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
-                class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <!-- <app-menu></app-menu> -->
-                <li class="nav-item"><a class="nav-link active" [routerLinkActiveOptions]="{exact: true}"
-                        aria-current="page" routerLinkActive="active" routerLink="/">Home</a></li>
-                <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="/books">Books</a></li>
-                <!-- <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="/books/book-details/">Book
+                <a class="navbar-brand" href="#"><img src="../../../../assets/images/logo.png" alt="logo"
+                                style="width: 40px;margin-left: 15%;"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation"><span
+                                class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <!-- <app-menu></app-menu> -->
+                                <li class="nav-item"><a class="nav-link active"
+                                                [routerLinkActiveOptions]="{exact: true}" aria-current="page"
+                                                routerLinkActive="active" routerLink="/">Home</a></li>
+                                <li class="nav-item"><a class="nav-link" routerLinkActive="active"
+                                                routerLink="/books">Books</a></li>
+
+                                <!-- <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="/books/book-details/">Book
                         Details</a></li> -->
-                <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="/checkout">Checkout</a>
-                </li>
-                <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="/confirm">Confirm</a>
-                </li>
-                <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="/login">Login</a></li>
-                <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="/signup">Signup</a></li>
-                <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="/reset-password">Reset
-                        Password</a></li>
-                        <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="/admin/books">Manage Books</a></li>
-            </ul>
-            <div class="d-flex">
-                <div>
-                    <a class="nav-link" routerLinkActive="active" routerLink="/cart"><svg
-                            xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" fill="white"
-                            class="bi bi-cart" viewBox="0 0 16 16">
-                            <path
-                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-                        </svg></a>
-                </div>
-                <div>
-                    <a class="nav-link" routerLinkActive="active" routerLink="/wishlist"><svg
-                            xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" fill="white"
-                            class="bi bi-bookmark-heart-fill" viewBox="0 0 16 16">
-                            <path
-                                d="M2 15.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v13.5zM8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z" />
-                        </svg></a>
-                </div>
-            </div>
+                                <!-- <li class="nav-item"><a class="nav-link" routerLinkActive="active"
+                                                routerLink="/checkout">Checkout</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" routerLinkActive="active"
+                                                routerLink="/confirm">Confirm</a>
+                                </li> -->
+                                <li class="nav-item dropdown" *ngIf=isAdmin()>
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink"
+                                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                Admin
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-dark"
+                                                aria-labelledby="navbarDarkDropdownMenuLink">
+                                                <li class="dropdown-item"><a class="nav-link" routerLinkActive="active"
+                                                        routerLink="/admin/books">Manage Books</a></li>
+                                        <li class="dropdown-item"><a class="nav-link" routerLinkActive="active"
+                                                        routerLink="/books">Manage Category</a></li>
+                                        <li class="dropdown-item"><a class="nav-link" routerLinkActive="active"
+                                                        routerLink="/admin/user-control">Manage Users</a></li>
+                                        <li class="dropdown-item"><a class="nav-link" routerLinkActive="active"
+                                                        routerLink="/admin/coupons">Manage Coupons</a></li>
+                                        <li class="dropdown-item"><a class="nav-link" routerLinkActive="active"
+                                                        routerLink="/admin/orders">View All Orders</a></li>
+                                        </ul>
+                                </li>
 
-            <!-- <form class="d-flex"><input class="form-control me-2" type="search" placeholder="Search"
+
+                                
+                        </ul>
+                        <div class="d-flex">
+                                <div>
+                                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                                                <li class="nav-item" *ngIf=isLoggedIn()><a class="nav-link"
+                                                                routerLinkActive="active" routerLink="/login">Login</a>
+                                                </li>
+                                                <li class="nav-item" *ngIf=isLoggedIn()><a class="nav-link"
+                                                                routerLinkActive="active"
+                                                                routerLink="/signup">Signup</a></li>
+                                                <!-- <li class="nav-item" *ngIf=isLoggedIn()><a class="nav-link"
+                                                                routerLinkActive="active"
+                                                                routerLink="/reset-password">Forgot Password</a></li> -->
+                                                <li class="nav-item" *ngIf=!isLoggedIn()><a class="nav-link"
+                                                                (click)=Logout() style="cursor: pointer;">Logout</a>
+                                                </li>
+                                        </ul>
+                                </div>
+                                <div>
+                                        <a class="nav-link" routerLinkActive="active" routerLink="/cart"><svg
+                                                        xmlns="http://www.w3.org/2000/svg" width="30px" height="30px"
+                                                        fill="white" class="bi bi-cart" viewBox="0 0 16 16">
+                                                        <path
+                                                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                                                </svg></a>
+                                </div>
+                                <div>
+                                        <a class="nav-link" routerLinkActive="active" routerLink="/wishlist"><svg
+                                                        xmlns="http://www.w3.org/2000/svg" width="30px" height="30px"
+                                                        fill="white" class="bi bi-bookmark-heart-fill"
+                                                        viewBox="0 0 16 16">
+                                                        <path
+                                                                d="M2 15.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v13.5zM8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z" />
+                                                </svg></a>
+                                </div>
+                        </div>
+
+                        <!-- <form class="d-flex"><input class="form-control me-2" type="search" placeholder="Search"
                     aria-label="Search"><button class="btn btn-outline-success" type="submit">Search</button></form> -->
+                </div>
         </div>
-    </div>
 </nav>

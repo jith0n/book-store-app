@@ -31,11 +31,12 @@ export class AuthService {
 //     }
 //   }
 
-  registerUser(user: User) {
-    const body: User = {
+  registerUser(user: User,roles : string[]) {
+    const body = {
       UserName: user.UserName,
       Password: user.Password,
-      Email: user.Email
+      Email: user.Email,
+      Roles : roles
     }
     var reqHeader = new HttpHeaders({'No-Auth':'True'});
     return this.http.post(this.rootUrl + '/api/User/Register', body,{headers : reqHeader});
@@ -51,9 +52,18 @@ export class AuthService {
     return  this.http.get(this.rootUrl+'/api/GetUserClaims');
    }
 
-   Logout() {
-    localStorage.removeItem('userToken');
-    this.router.navigate(['/login']);
+   roleMatch(allowedRoles: string[]): boolean {
+    var isMatch = false;
+    var userRoles: string[] = JSON.parse(localStorage.getItem("userRoles") || '{}');
+    allowedRoles.forEach(element => {
+      if (userRoles.indexOf(element) > -1) {
+        isMatch = true;
+        return false;
+      }
+      return true;
+    });
+    return isMatch;
+
   }
 
 }
