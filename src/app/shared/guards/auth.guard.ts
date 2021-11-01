@@ -16,7 +16,7 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean{
       console.log("inside gaurd");
-      if(localStorage.getItem("authToken")!=null && localStorage.getItem("Id")!=null){
+      if(localStorage.getItem("authToken")!=null){
         //this.authService.getUserClaims().subscribe((data: any) => {
           //this.userClaims = data;});
           //if(this.userClaims!=null){
