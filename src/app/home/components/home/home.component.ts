@@ -1,3 +1,4 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { BooksService } from 'src/app/books/services/books.service';
 
@@ -13,11 +14,12 @@ export class HomeComponent implements OnInit {
   constructor(private booksService: BooksService) { }
 
   ngOnInit(): void {
-    this.booksService.getBooks()
-      .subscribe((res: any)=>{
-        console.log(res);
-        this.bookList=res;
-      });
+    
+    // this.booksService.getBooks()
+    //   .subscribe((res: any)=>{
+    //     console.log(res);
+    //     this.bookList=res;
+    //   });
   }
 
 }

@@ -9,18 +9,18 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 export class AuthGuard implements CanActivate {
   // constructor(private router: Router, private authService: AuthService){
   // }
-  userClaims: any;
+  
   constructor (private router: Router,private authService: AuthService){}
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean{
-      
-      if(localStorage.getItem("authToken")!=null){
-        this.authService.getUserClaims().subscribe((data: any) => {
-          this.userClaims = data;});
-          if(this.userClaims!=null){
-            localStorage.setItem("Id",this.userClaims.Id);
+      console.log("inside gaurd");
+      if(localStorage.getItem("authToken")!=null && localStorage.getItem("Id")!=null){
+        //this.authService.getUserClaims().subscribe((data: any) => {
+          //this.userClaims = data;});
+          //if(this.userClaims!=null){
+            //localStorage.setItem("Id",this.userClaims.Id);
 
             
             let roles = next.data["roles"] as Array<string>;
@@ -34,7 +34,7 @@ export class AuthGuard implements CanActivate {
             }
             else
             return true;
-          }
+          //}
         }
       this.router.navigate(['login'], { queryParams: { returnURL: state.url }});
       return false;
