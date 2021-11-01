@@ -1,11 +1,11 @@
 
 <div class="container"> 
-     <form class="d-flex p-5"><input class="my-5 form-control me-2" type="search" placeholder="Search For a Book"
+     <form class="d-flex p-5"><input  #bookName class="my-5 form-control me-2" type="search" placeholder="Enter Book Name"
                     aria-label="Search"><button class="my-5 btn btn-outline-success" type="submit">Search</button></form>
     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-3">
     
 
-        <div class="col mb-3" id="bookCard" *ngFor="let book of bookList">
+        <div class="col mb-3" id="bookCard" *ngFor="let book of bookList | searchFilter: 'Title': bookName.value">
             <div class="card shadow-sm">
                 <img src="{{book.ImageUrl}}" alt="Book test" routerLink="/books/{{book.BookId}}" style="cursor:pointer;" >
 
