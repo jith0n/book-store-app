@@ -54,14 +54,18 @@ export class AuthService {
 
    roleMatch(allowedRoles: string[]): boolean {
     var isMatch = false;
-    var userRoles: string[] = JSON.parse(localStorage.getItem("userRoles") || '{}');
-    allowedRoles.forEach(element => {
-      if (userRoles.indexOf(element) > -1) {
-        isMatch = true;
-        return false;
-      }
-      return true;
-    });
+    //var userRoles: string[] = ['loggedOut'];
+    if(localStorage.getItem("userRoles")!=null){
+      var userRoles:string[] = JSON.parse(localStorage.getItem("userRoles") || '{}');
+      allowedRoles.forEach(element => {
+        if (userRoles.indexOf(element) > -1) {
+          isMatch = true;
+          return false;
+        }
+        return true;
+      });
+
+    } 
     return isMatch;
 
   }
