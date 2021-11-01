@@ -34,6 +34,8 @@ import { AddBookComponent } from './admin/components/manage-books/components/add
 import { AuthService } from './auth/services/auth.service';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
+import { NgMarqueeModule } from 'ng-marquee';
+import { AddCategoryComponent } from './admin/components/manage-category/components/add-category/add-category.component';
 
 
 @NgModule({
@@ -61,7 +63,8 @@ import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 
     UserControlComponent,
 
-    AddBookComponent
+    AddBookComponent,
+    AddCategoryComponent
 
   ],
   imports: [
@@ -69,7 +72,8 @@ import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgMarqueeModule
   ],
   providers: [AuthService,AuthGuard,{
     provide:HTTP_INTERCEPTORS,
