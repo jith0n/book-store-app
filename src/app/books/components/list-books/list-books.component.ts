@@ -12,6 +12,8 @@ import { BooksService } from '../../services/books.service';
 export class ListBooksComponent implements OnInit {
   
   bookList: any[]=[]; 
+
+ 
   
   constructor(private booksService: BooksService, private updateCartService: CartItemsService,
               private router: Router, private authService: AuthService) { }
@@ -25,9 +27,18 @@ export class ListBooksComponent implements OnInit {
       });
   }
 
-  handleAddtoCart(book: any): void{
+  handleAddtoCart(book: any):void{
+    const cartModel = {
+      BookId:book.BookId,
+      userId: localStorage.getItem('Id')
+    }
     if(localStorage.getItem("authToken")!=null){
-      this.updateCartService.updateCart(book);
+      //this.cartModel.BookId = book.BookId;
+      console.log(cartModel);
+      this.updateCartService.updateCart(cartModel)
+        .subscribe((res: any)=>{
+          console.log(res);
+        });
     }else{
     this.router.navigate(['login'], { queryParams: { returnURL: '/books' }});
     }

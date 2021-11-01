@@ -1,11 +1,15 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartItemsService {
+
+  apiName = "https://localhost:44332/api/carts/";
+  
 //Step 1: Have the default card items
   // We will normally load this from REST API
   // but now mocking it with static data
@@ -42,17 +46,40 @@ export class CartItemsService {
  latestWishItemsList: Observable<any> = this.wishItemslist.asObservable();
 
 
-  constructor() { }
+  constructor( private http :HttpClient) { 
+    this.http.get(this.apiName)
+      .pipe(map((res: any)=>{
+        console.log(res);
+        //return res;
+      }));
+  }
 
-  updateCart(book: any): void{        //must add new book if not exist in cart else increment quantity
+  getCart():any{
+   let userId = localStorage.getItem('Id');
+   return this.http.get(this.apiName)
+      .pipe(map((res: any)=>{
+        console.log(res);
+        
+        return res;
+      }));
+  }
+
+  updateCart(cart: any): any{        //must add new book if not exist in cart else increment quantity
     //console.log(book);
     //Let's update the cart items
-    this.latestCartItemsList.pipe(take(1)).subscribe((cartItems: any) => {    
-      //console.log(cartItems); //Array
-      const newCartItemsArr = [...cartItems,book];
-     // console.log(newCartItemsArr);
-      this.cartItemslist.next(newCartItemsArr);
-    });
+    // this.latestCartItemsList.pipe(take(1)).subscribe((cartItems: any) => {    
+    //   //console.log(cartItems); //Array
+    //   const newCartItemsArr = [...cartItems,cart];
+    //  // console.log(newCartItemsArr);
+    //   this.cartItemslist.next(newCartItemsArr);
+    // });
+    console.log(cart);
+     return this.http.post(this.apiName,cart)
+      .pipe(map((res : any) =>{
+        console.log(res);
+        return res;
+      }))
+
   }
 
   removeCart(book: any): void{    //must remove book from cart
