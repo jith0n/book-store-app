@@ -6,9 +6,7 @@
         <th scope="col">Book Id</th>
         <th scope="col">Title</th>
         <th scope="col">Price</th>
-        <th scope="col">Stock</th>
-        <th scope="col">Position</th>
-        <th scope="col">Status</th>
+        <th scope="col">AuthorName</th>
         <th scope="col"></th>
         <th scope="col"><a routerLink="add" class="btn btn-success">Add New Book</a></th>
       </tr>
@@ -17,13 +15,12 @@
 
     </thead>
     <tbody>
-      <tr *ngFor="let book of bookList" >
-        <th scope="row">{{book.id}}</th>
-        <td>image</td>
-        <td>{{book.name}}</td>
-        <td>{{book.id}}</td>
-        <td>{{book.phone}}</td>
-        <td>{{book.name}}</td>
+
+      <tr *ngFor="let book of bookList">
+        <th scope="row">{{book.BookId}}</th>
+        <td>{{book.Title}}</td>
+        <td>{{book.Price}}</td>
+        <td>{{book.AuthorName}}</td>
         <td><button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editUserModal" (click)="handleEditModalOpen(book)">Edit</button></td>
         <td><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteUserModal" (click)="handleEditModalOpen(book)">Delete</button></td>
 
@@ -47,7 +44,7 @@
                     <label for="staticEmail" class="col-sm-2 col-form-label">Title</label>
                     <div class="col-sm-10">
                       <input type="text" class="form-control" placeholder="Enter name" 
-                      [(ngModel)]="dupBookData.name" name="name" required>
+                      [(ngModel)]="dupBookData.Title" name="name" required>
                     </div>
                   </div>
                   <div class="form-group row mb-3">
@@ -134,14 +131,19 @@
                 <form ngNativeValidate (ngSubmit)=handleDeleteUser() >
                     <h4>Are You Sure You Want to Delete This Book ?</h4>
          
+                    <h5>{{dupBookData.BookId}}</h5>
+                      <h5>{{dupBookData.Title}}</h5>
+                      <h5>{{dupBookData.Price}}</h5>
+                      <h5>{{dupBookData.AuthorName}}</h5>
 
-                  <div class="alert alert-success" *ngIf="isUpdated">
-                    Updated successfully!
+
+                  <div class="alert alert-success" *ngIf="isDeleted">
+                    Deleted successfully!
                   </div>
 
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-danger">Delete Book</button>
+                    <button type="submit" class="btn btn-danger" (click)="handleConfirmDelete(dupBookData.BookId)">Delete Book</button>
                   </div>
                 </form>
               </div>

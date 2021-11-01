@@ -34,8 +34,13 @@ import { AddBookComponent } from './admin/components/manage-books/components/add
 import { AuthService } from './auth/services/auth.service';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
+
 import { NgMarqueeModule } from 'ng-marquee';
 import { AddCategoryComponent } from './admin/components/manage-category/components/add-category/add-category.component';
+
+import { SearchFilterPipe } from './shared/pipes/search-filter.pipe';
+import { ForbiddenComponent } from './auth/components/forbidden/forbidden.component';
+
 
 
 @NgModule({
@@ -60,11 +65,19 @@ import { AddCategoryComponent } from './admin/components/manage-category/compone
     CouponsComponent,
     AddCouponComponent,
     OrdersComponent,
-
+    SearchFilterPipe,
     UserControlComponent,
 
     AddBookComponent,
-    AddCategoryComponent
+
+    AddCategoryComponent,
+
+ 
+      SearchFilterPipe,
+
+      ForbiddenComponent
+
+
 
   ],
   imports: [

@@ -7,11 +7,13 @@ import {map} from 'rxjs/operators'
 })
 export class BooksService {
 
+  apiName = "https://localhost:44332/api/books/";
+
   constructor(private http: HttpClient) { }
 
   getBooks(): any{
     console.log("inside serivices");
-    return this.http.get("https://jsonplaceholder.typicode.com/photos")
+    return this.http.get(this.apiName)
       .pipe(map((res: any)=>{
         console.log(res);
         return res;
@@ -21,7 +23,7 @@ export class BooksService {
 
   getBookById(bookId: string | null): any{
     console.log("inside serivices");
-    let bookIdUrl = `https://jsonplaceholder.typicode.com/photos/${bookId}`;
+    let bookIdUrl = this.apiName+bookId;
     return this.http.get(bookIdUrl)
       .pipe(map((res: any)=>{
         console.log(res);

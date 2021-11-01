@@ -2,30 +2,29 @@
 <div class="container card " id="bookDetails">
     <div class="row" style="padding: 50px;">
         <div class="col-12 col-md-5 pull-right">
-            <img src="{{bookData.url}}" alt="book cover" style="width:70%">
+            <img src="{{bookData.ImageUrl}}" alt="book cover" style="width:70%">
         </div>
         <div class="col-12 col-md-7 " style="text-align: left;">
-            <h1>Book Name</h1><br>
-            <h3>Author name</h3>
+            <h1>{{bookData.Title}}</h1><br>
+            <h3>{{bookData.Author}}</h3>
             <hr>
-            <h2>&#8377;99.99</h2>
-            <h3 style="color: green;">In Stock</h3>
+            <h2>&#8377;{{bookData.Price}}</h2>
+            <h3 style="color: green;">{{bookData.stock}}</h3>
             <hr>
-            <button class="btn btn-success mx-2">Add To Cart</button>
-            <button class="btn btn-danger mx-2">Add To WishList</button>
+            <button class="btn btn-success mx-2" (click)="handleAddtoCart(bookData)">Add To Cart</button>
+            <button class="btn btn-danger mx-2" (click)="handleAddtoWishList(bookData)">Add To WishList</button>
             
         </div>
         <div class="col-12" style="padding-top: 30px;">
             
-            <h4>Description</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum neque repudiandae unde, nemo quam repellat facere officia modi sint id libero dicta expedita distinctio veritatis exercitationem ut, tempore provident mollitia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque illum iste distinctio voluptates beatae eveniet necessitatibus esse expedita. Eius repellendus rerum perspiciatis commodi praesentium libero rem suscipit fugit deleniti qui.</p>
+            <h4>{{bookData.Description}}</h4>
             <h4>Product Details</h4>
             <ul>
-                <li><span class="fw-bold">Book Name: </span><span>Nora Barret</span></li>
-                <li><span class="fw-bold">Author Name: </span><span>The King of Drugs</span></li>
-                <li><span class="fw-bold">Category: </span><span>History</span></li>
-                <li><span class="fw-bold">Year: </span><span>2018</span></li>
-                <li><span class="fw-bold">ISBN: </span><span>2134121231231</span></li>
+                <li><span class="fw-bold">Book Name: </span><span>{{bookData.Title}}</span></li>
+                <li><span class="fw-bold">Author Name: </span><span>{{bookData.Author}}</span></li>
+                <li><span class="fw-bold">Category: </span><span>{{bookData.CategoryName}}</span></li>
+                <li><span class="fw-bold">Year: </span><span>{{bookData.Year}}</span></li>
+                <li><span class="fw-bold">ISBN: </span><span>{{bookData.ISBN}}</span></li>
             </ul>
         </div>
     </div>

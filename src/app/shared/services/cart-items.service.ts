@@ -13,7 +13,9 @@ export class CartItemsService {
     {
     id: 3,
     url: "https://via.placeholder.com/600/92c952",
-    title: 'sdjfbdfjsilk'
+    title: 'sdjfbdfjsilk',
+    price:'',
+    category:''
     }
   ];
 
@@ -21,7 +23,9 @@ export class CartItemsService {
     {
       id: 3,
       url: "https://via.placeholder.com/600/92c952",
-      title: 'sdjfbdfjsilk'
+      title: 'sdjfbdfjsilk',
+      price:'',
+      category:''
     }
   ]
 
@@ -40,22 +44,28 @@ export class CartItemsService {
 
   constructor() { }
 
-  updateCart(book: any): void{
+  updateCart(book: any): void{        //must add new book if not exist in cart else increment quantity
     //console.log(book);
-
     //Let's update the cart items
-    this.latestCartItemsList.pipe(take(1)).subscribe((cartItems: any) => {
+    this.latestCartItemsList.pipe(take(1)).subscribe((cartItems: any) => {    
       //console.log(cartItems); //Array
-
       const newCartItemsArr = [...cartItems,book];
      // console.log(newCartItemsArr);
       this.cartItemslist.next(newCartItemsArr);
     });
   }
 
+  removeCart(book: any): void{    //must remove book from cart
+
+  }
+
+  removeWishlist(book:any): void{   //must remove book from wishlist
+
+  }
 
 
-  updateWishlist(book: any): void{
+
+  updateWishlist(book: any): void{      //must only add once
     this.latestWishItemsList.pipe(take(1)).subscribe((wishItems: any) => {
       const newWishItemsArr = [...wishItems,book];
       this.wishItemslist.next(newWishItemsArr);

@@ -12,6 +12,7 @@ interface IUser{
   UserName: string;
   Password: string;
   Email: string;
+
 }
 
 // Decorator
@@ -24,6 +25,7 @@ export class User implements IUser{
   UserName = '';
   Password = '';
   Email = '';
+
 
   // util methods can be added here
 }
