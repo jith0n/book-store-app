@@ -11,6 +11,7 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent implements OnInit {
 
   isLoginError : boolean = false;
+  userClaims: any;
 
   constructor(private authService: AuthService, private router: Router,
               private activatedRoute: ActivatedRoute) { }
@@ -22,6 +23,11 @@ export class LoginComponent implements OnInit {
     this.authService.userAuthentication(userName,password).subscribe((data : any)=>{
       localStorage.setItem('authToken',data.access_token);
       localStorage.setItem('userRoles',data.role);
+      this.authService.getUserClaims().subscribe((data: any) => {
+        this.userClaims = data;});
+        if(this.userClaims!=null){
+          localStorage.setItem("Id",this.userClaims.Id);}
+
       this.router.navigateByUrl(this.activatedRoute.snapshot.queryParams['returnURL']);
     },
     (err: HttpErrorResponse)=>{
