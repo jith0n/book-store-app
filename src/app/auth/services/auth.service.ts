@@ -9,7 +9,7 @@ import { User } from 'src/app/shared/models/user';
 })
 export class AuthService {
 
-  readonly rootUrl = 'https://localhost:44332'; //api address
+  readonly rootUrl = 'https://localhost:44325'; //api address
   
   constructor(private http: HttpClient,private router: Router) { }
 
@@ -45,23 +45,37 @@ export class AuthService {
   userAuthentication(userName: string, password: string) {
     var data = "username=" + userName + "&password=" + password + "&grant_type=password";
     var reqHeader = new HttpHeaders({ 'Content-Type': 'application/x-www-urlencoded','No-Auth':'True' });
+
     return this.http.post(this.rootUrl + '/token', data, { headers: reqHeader });
+    // if(result){
+    //     let userClaims: any;
+    //         this.getUserClaims().subscribe((data: any) => {
+    //     userClaims = data;});
+    //     if(userClaims!=null){
+    //     localStorage.setItem("Id",userClaims.Id);}
+    // }
+    // return result;
   }
 
   getUserClaims(){
+    
     return  this.http.get(this.rootUrl+'/api/GetUserClaims');
    }
 
    roleMatch(allowedRoles: string[]): boolean {
     var isMatch = false;
-    var userRoles: string[] = JSON.parse(localStorage.getItem("userRoles") || '{}');
-    allowedRoles.forEach(element => {
-      if (userRoles.indexOf(element) > -1) {
-        isMatch = true;
-        return false;
-      }
-      return true;
-    });
+    //var userRoles: string[] = ['loggedOut'];
+    if(localStorage.getItem("userRoles")!=null){
+      var userRoles:string[] = JSON.parse(localStorage.getItem("userRoles") || '{}');
+      allowedRoles.forEach(element => {
+        if (userRoles.indexOf(element) > -1) {
+          isMatch = true;
+          return false;
+        }
+        return true;
+      });
+
+    } 
     return isMatch;
 
   }

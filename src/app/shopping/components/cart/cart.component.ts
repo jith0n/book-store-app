@@ -13,10 +13,28 @@ export class CartComponent implements OnInit {
   constructor(private cartItemService: CartItemsService) { }
 
   ngOnInit(): void {
-    this.cartItemService.latestCartItemsList.subscribe((cartItems: any) => {
-     // console.log(cartItems);
-      this.cartItemList = cartItems;
-    })
+    // this.cartItemService.latestCartItemsList.subscribe((cartItems: any) => {
+    //  // console.log(cartItems);
+    //   this.cartItemList = cartItems;
+    // })
 
-}
+    this.cartItemService.getCart()
+      .subscribe((res: any)=>{
+        console.log(res);
+        
+        this.cartItemList=res;
+      });
+    }
+
+      isValid(userId: string): any{
+        let id = localStorage.getItem("Id");
+        console.log(userId);
+        if(userId == id){
+          return true;
+        }
+        else{
+          return false;
+        }
+      }
+
 }

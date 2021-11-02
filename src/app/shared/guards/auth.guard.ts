@@ -9,26 +9,33 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 export class AuthGuard implements CanActivate {
   // constructor(private router: Router, private authService: AuthService){
   // }
-  userClaims: any;
+  
   constructor (private router: Router,private authService: AuthService){}
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean{
-      
-      if(localStorage.getItem("authToken")!=null &&  this.authService.getUserClaims().subscribe((data: any) => {
-        this.userClaims = data;})){
-          let roles = next.data["roles"] as Array<string>;
-          if (roles) {
-            var match = this.authService.roleMatch(roles);
-            if (match) return true;
-            else {
-              this.router.navigate(['/forbidden']);
-              return false;
+      console.log("inside gaurd");
+      if(localStorage.getItem("authToken")!=null){
+        // let userClaims: any;
+        // this.authService.getUserClaims().subscribe((data: any) => {
+        // userClaims = data;});
+          
+        //     localStorage.setItem("Id",userClaims.Id);
+
+            
+            let roles = next.data["roles"] as Array<string>;
+            if (roles) {
+              var match = this.authService.roleMatch(roles);
+              if (match) return true;
+              else {
+                this.router.navigate(['/forbidden']);
+                return false;
+              }
             }
-          }
-          else
+            else
             return true;
+          //}
         }
       this.router.navigate(['login'], { queryParams: { returnURL: state.url }});
       return false;

@@ -12,10 +12,14 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent implements OnInit {
 
   isLoginError : boolean = false;
+
   loginForm = new FormGroup({
     uname: new FormControl('', [Validators.required]),
     pwd: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(12)])
   })
+
+  userClaims: any;
+
 
   constructor(private authService: AuthService, private router: Router,
               private activatedRoute: ActivatedRoute) { }
@@ -28,6 +32,8 @@ export class LoginComponent implements OnInit {
     this.authService.userAuthentication(userName,password).subscribe((data : any)=>{
       localStorage.setItem('authToken',data.access_token);
       localStorage.setItem('userRoles',data.role);
+      localStorage.setItem("Id",data.Id);
+      
       this.router.navigateByUrl(this.activatedRoute.snapshot.queryParams['returnURL']);
     },
     (err: HttpErrorResponse)=>{

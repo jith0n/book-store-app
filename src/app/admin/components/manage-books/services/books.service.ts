@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 })
 export class BooksService {
 
-  apiName = "https://localhost:44332/api/books/";
+  readonly apiName = "https://localhost:44332/api/books";
 
   constructor(private http: HttpClient) { }
 
@@ -39,7 +39,7 @@ export class BooksService {
 
   updateBook(bookData: any): any{
     console.log("inside serivices");
-    let bookIdUrl = this.apiName+bookData.id;
+    let bookIdUrl = this.apiName+'/'+bookData.id;
     return this.http.put(bookIdUrl,bookData)
       .pipe(map((res: any)=>{
         console.log(res);
@@ -49,7 +49,7 @@ export class BooksService {
 
   deleteBook(bookId: number | null): any{
     console.log("inside serivices");
-    let bookIdUrl = this.apiName+bookId;
+    let bookIdUrl = this.apiName+'/'+bookId;
     return this.http.delete(bookIdUrl)
       .pipe(map((res: any)=>{
         console.log(res);

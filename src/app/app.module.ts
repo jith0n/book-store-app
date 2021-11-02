@@ -35,7 +35,7 @@ import { AuthService } from './auth/services/auth.service';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 
-import { NgMarqueeModule } from 'ng-marquee';
+
 import { AddCategoryComponent } from './admin/components/manage-category/components/add-category/add-category.component';
 
 import { SearchFilterPipe } from './shared/pipes/search-filter.pipe';
@@ -85,8 +85,8 @@ import { ForbiddenComponent } from './auth/components/forbidden/forbidden.compon
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    NgMarqueeModule
+    HttpClientModule
+    
   ],
   providers: [AuthService,AuthGuard,{
     provide:HTTP_INTERCEPTORS,
