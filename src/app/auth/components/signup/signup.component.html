@@ -9,21 +9,21 @@
               <h1 class="h3 mb-3 fw-normal">Create New Account</h1>
           
               <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com" name="Email" #Email="ngModel" [(ngModel)]="user.Email" required>
+                <input type="email" required class="form-control" id="floatingEmail" placeholder="name@example.com" name="Email" #Email="ngModel" [(ngModel)]="user.Email" required>
                 <label for="floatingEmail" style="color: black;">Email address</label>
               </div>
               <div class="form-floating mb-3">
-                  <input type="text" class="form-control" id="floatingUserName" placeholder="Username" name="UserName" #UserName="ngModel" [(ngModel)]="user.UserName" required>
+                  <input type="text" required class="form-control" id="floatingUserName" placeholder="Username" name="UserName" #UserName="ngModel" [(ngModel)]="user.UserName" required>
                   <label for="floatingUserName" style="color: black;">Username</label>
                 </div>
               <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="floatingPassword1" placeholder="Set Password" name="Password" #Password="ngModel" [(ngModel)]="user.Password" required>
+                <input type="password" required class="form-control" id="floatingPassword1" placeholder="Set Password" name="Password" #Password="ngModel" [(ngModel)]="user.Password" required>
                 <label for="floatingPassword1" style="color: black;">Set Password</label>
               </div>
-              <div class="form-floating mb-3">
-                  <input type="password" class="form-control" id="floatingPassword2" placeholder="Confirm Password" name="PasswordConfirm" required>
+              <!-- <div class="form-floating mb-3">
+                  <input type="password" required class="form-control" id="floatingPassword2" placeholder="Confirm Password" name="PasswordConfirm" required>
                   <label for="floatingPassword2" style="color: black;">Confirm Password</label>
-                </div>
+                </div> -->
           
               <div class="checkbox mb-3">
                 <label>
