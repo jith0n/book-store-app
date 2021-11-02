@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { User } from 'src/app/shared/models/user';
 import { AuthService } from '../../services/auth.service';
 
@@ -11,6 +11,13 @@ import { AuthService } from '../../services/auth.service';
 export class SignupComponent implements OnInit {
 
   user: User = new User;
+
+  signupForm = new FormGroup({
+    email: new FormControl('',[Validators.required, Validators.email]),
+    uname: new FormControl('',[Validators.required]),
+    pwd: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(12)]),
+    cpwd: new FormControl('', [Validators.required])
+  })
 
   constructor(private authService: AuthService) { }
 

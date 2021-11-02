@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
@@ -11,12 +12,20 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent implements OnInit {
 
   isLoginError : boolean = false;
+
+  loginForm = new FormGroup({
+    uname: new FormControl('', [Validators.required]),
+    pwd: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(12)])
+  })
+
   userClaims: any;
+
 
   constructor(private authService: AuthService, private router: Router,
               private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+
   }
   handleLogin(userName: string, password: string): void{
     
