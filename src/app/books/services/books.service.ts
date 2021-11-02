@@ -14,7 +14,7 @@ export class BooksService {
   getBooks(): any{
     console.log("inside serivices");
     var reqHeader = new HttpHeaders({'No-Auth':'True'});
-    return this.http.get(this.apiName)
+    return this.http.get(this.apiName ,{ headers: reqHeader })
       .pipe(map((res: any)=>{
         console.log(res);
         return res;
@@ -25,7 +25,8 @@ export class BooksService {
   getBookById(bookId: string | null): any{
     console.log("inside serivices");
     let bookIdUrl = this.apiName+'/'+bookId;
-    return this.http.get(bookIdUrl)
+    var reqHeader = new HttpHeaders({'No-Auth':'True'});
+    return this.http.get(bookIdUrl,{ headers: reqHeader })
       .pipe(map((res: any)=>{
         console.log(res);
         return res;
