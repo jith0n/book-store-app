@@ -45,8 +45,16 @@ export class ListBooksComponent implements OnInit {
   }
 
   handleAddtoWishList(book: any): void{
+    const wishListModel = {
+      booksid:book.BookId,
+      userId: localStorage.getItem('Id')
+    }
     if(localStorage.getItem("authToken")!=null){
-      this.updateCartService.updateWishlist(book);
+      console.log(wishListModel);
+      this.updateCartService.updateWishlist(wishListModel)
+        .subscribe((res: any)=>{
+          console.log(res);
+        });
     }else{
       this.router.navigate(['login'], { queryParams: { returnURL: '/books' }});
     }
