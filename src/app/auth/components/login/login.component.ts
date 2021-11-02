@@ -23,11 +23,8 @@ export class LoginComponent implements OnInit {
     this.authService.userAuthentication(userName,password).subscribe((data : any)=>{
       localStorage.setItem('authToken',data.access_token);
       localStorage.setItem('userRoles',data.role);
-      this.authService.getUserClaims().subscribe((data: any) => {
-        this.userClaims = data;});
-        if(this.userClaims!=null){
-          localStorage.setItem("Id",this.userClaims.Id);}
-
+      localStorage.setItem("Id",data.Id);
+      
       this.router.navigateByUrl(this.activatedRoute.snapshot.queryParams['returnURL']);
     },
     (err: HttpErrorResponse)=>{
