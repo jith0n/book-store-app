@@ -9,19 +9,21 @@ import { CartItemsService } from 'src/app/shared/services/cart-items.service';
 export class CartComponent implements OnInit {
 
   cartItemList: any[] = [];
-
+  cartCount:number = 0;
+  isDeleted = false;
+  cartTotalPrice: number = 0;
   constructor(private cartItemService: CartItemsService) { }
 
   ngOnInit(): void {
-    // this.cartItemService.latestCartItemsList.subscribe((cartItems: any) => {
-    //  // console.log(cartItems);
-    //   this.cartItemList = cartItems;
-    // })
 
     this.cartItemService.getCart()
       .subscribe((res: any)=>{
         console.log(res);
-        
+        for(var item of res){
+          this.cartCount=this.cartCount +1;
+          
+          this.cartTotalPrice = this.cartTotalPrice + item.BookPrice;
+        }
         this.cartItemList=res;
       });
     }
@@ -35,6 +37,18 @@ export class CartComponent implements OnInit {
         else{
           return false;
         }
+      }
+
+      removeCart(cartId: number):void{
+        this.cartItemService.removeCart(cartId)
+        .subscribe( (res: any) => {
+          console.log(res);
+          if(res){
+            this.isDeleted = true;
+            window.location = window.location;  //for refresh
+            //this.bookList = res;
+          }
+        });
       }
 
 }

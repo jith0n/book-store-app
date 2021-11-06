@@ -9,27 +9,9 @@ import { User } from 'src/app/shared/models/user';
 })
 export class AuthService {
 
-  readonly rootUrl = 'https://localhost:44332'; //api address
+  readonly rootUrl = 'https://localhost:44392'; //api address
   
   constructor(private http: HttpClient,private router: Router) { }
-
-// login(formData: any): any{
-//   console.log(formData);
-
-//   return this.http.post('https://reqres.in/api/login', formData)
-//   .pipe(map((res: any)=>{
-//     console.log(res);
-//     return res;
-//   }));
-// }
-
-//   isAuth(){
-//     if(localStorage.getItem('authToken')){
-//       return true;
-//     }else{
-//       return false;
-//     }
-//   }
 
   registerUser(user: User,roles : string[]) {
     const body = {
@@ -47,14 +29,6 @@ export class AuthService {
     var reqHeader = new HttpHeaders({ 'Content-Type': 'application/x-www-urlencoded','No-Auth':'True' });
 
     return this.http.post(this.rootUrl + '/token', data, { headers: reqHeader });
-    // if(result){
-    //     let userClaims: any;
-    //         this.getUserClaims().subscribe((data: any) => {
-    //     userClaims = data;});
-    //     if(userClaims!=null){
-    //     localStorage.setItem("Id",userClaims.Id);}
-    // }
-    // return result;
   }
 
   getUserClaims(){

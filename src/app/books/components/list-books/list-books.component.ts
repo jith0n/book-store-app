@@ -32,14 +32,18 @@ export class ListBooksComponent implements OnInit {
       BookId:book.BookId,
       userId: localStorage.getItem('Id')
     }
-    if(localStorage.getItem("authToken")!=null){
+    if(localStorage.getItem("authToken")!=null && this.authService.roleMatch(["Customer"])){
       //this.cartModel.BookId = book.BookId;
       console.log(cartModel);
       this.updateCartService.updateCart(cartModel)
         .subscribe((res: any)=>{
           console.log(res);
         });
-    }else{
+    }
+    else if(localStorage.getItem("authToken")!=null && this.authService.roleMatch(["Admin"])){
+      //just put toast
+    }
+    else{
     this.router.navigate(['login'], { queryParams: { returnURL: '/books' }});
     }
   }
@@ -49,12 +53,15 @@ export class ListBooksComponent implements OnInit {
       booksid:book.BookId,
       userId: localStorage.getItem('Id')
     }
-    if(localStorage.getItem("authToken")!=null){
+    if(localStorage.getItem("authToken")!=null && this.authService.roleMatch(["Customer"])){
       console.log(wishListModel);
       this.updateCartService.updateWishlist(wishListModel)
         .subscribe((res: any)=>{
           console.log(res);
         });
+    }
+    else if(localStorage.getItem("authToken")!=null && this.authService.roleMatch(["Admin"])){
+      //just put toast
     }else{
       this.router.navigate(['login'], { queryParams: { returnURL: '/books' }});
     }

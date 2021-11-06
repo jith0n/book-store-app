@@ -1,33 +1,24 @@
-<div class="container" style="padding: 100px 0 40px 0"> 
+<div class="container text-light" style="padding: 100px 0 40px 0"> 
     <h1 style="margin-bottom: 40px;">My WishList</h1>
    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-3">
     
         <div class="col"  *ngFor="let book of wishItemList">
-            <div class="card" id="bookCard" *ngIf=isValid(book.userId)>
-                <img src="{{book.BookImageUrl}}" alt="Book test" routerLink="/books/{{book.BookId}}"  >
+            <div class="card bg-dark text-light" id="bookCard">
+                <img src="{{book.BookImageUrl}}" alt="Book test" routerLink="/books/{{book.BookId}}" style="aspect-ratio: 0.625;" >
               <div class="card-body">
-                <p class="card-text fw-bold h4">{{book.Title}}</p>
+                <p class="card-text fw-bold h4">{{book.BookTitle}}</p>
                 <p class="h6 fst-italic">{{book.Author}}</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                      <button class="btn btn-primary btn-block" (click)="handleAddtoCart(book)">Add to cart</button>
+                      <button class="btn btn-primary btn-block btn-sm" (click)="handleAddtoCart(book)">Add to cart</button>
+                      <button class="btn btn-danger btn-block btn-sm" type="submit" (click)="removeWishlist(book.Id)">Remove</button>
                       <!-- <button class="btn btn-secondary btn-block" (click)="handleAddtoWishList(book)">Add to wishlist</button> -->
                   </div>
-                  <p class="fw-bold">&#8377;99.99</p>
+                  <p class="fw-bold">&#8377;{{book.BookPrice}}</p>
                 </div>
               </div>
             </div>
-          
-  
-        <!-- <app-book-card></app-book-card>
-        <app-book-card></app-book-card>
-        <app-book-card></app-book-card>
-        <app-book-card></app-book-card>
-        <app-book-card></app-book-card>
-        <app-book-card></app-book-card>
-        <app-book-card></app-book-card>
-        <app-book-card></app-book-card>
-        <app-book-card></app-book-card> -->
+    
     </div>
    </div>
 </div>

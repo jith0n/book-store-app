@@ -10,15 +10,12 @@ import { CartItemsService } from 'src/app/shared/services/cart-items.service';
 export class WishlistComponent implements OnInit {
 
   wishItemList: any[] = [];
-
+  isDeleted = false;
   constructor(private wishItemService: CartItemsService, private updateCartService: CartItemsService
     ,private router : Router, private cartItemService :CartItemsService) { }
 
   ngOnInit(): void {
-    // this.updateCartService.latestWishItemsList.subscribe((cartItems: any) => {
-    //   // console.log(cartItems);
-    //    this.wishItemList = cartItems;
-    //  })
+
     this.cartItemService.getWishList()
       .subscribe((res: any)=>{
         console.log(res);
@@ -36,6 +33,18 @@ export class WishlistComponent implements OnInit {
     else{
       return false;
     }
+  }
+
+  removeWishlist(wishId: number):void{
+    this.cartItemService.removeWish(wishId)
+    .subscribe( (res: any) => {
+      console.log(res);
+      if(res){
+        this.isDeleted = true;
+        //this.bookList = res;
+      }
+    });
+    window.location = window.location;  //for refresh
   }
 
 handleAddtoCart(book: any):void{

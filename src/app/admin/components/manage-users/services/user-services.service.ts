@@ -11,7 +11,7 @@ export class UserServicesService {
 }
 
 getUsers(): any{
-  return this.http.get('https://jsonplaceholder.typicode.com/todos')
+  return this.http.get('https://localhost:44392/api/user')
       .pipe( map( (res: any) => {
         console.log(res);
         return res;

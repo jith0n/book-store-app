@@ -17,11 +17,6 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): boolean{
       console.log("inside gaurd");
       if(localStorage.getItem("authToken")!=null){
-        // let userClaims: any;
-        // this.authService.getUserClaims().subscribe((data: any) => {
-        // userClaims = data;});
-          
-        //     localStorage.setItem("Id",userClaims.Id);
 
             
             let roles = next.data["roles"] as Array<string>;
@@ -42,16 +37,6 @@ export class AuthGuard implements CanActivate {
     }
   
 
-  // canActivate(
-  //   route: ActivatedRouteSnapshot,
-  //   state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    
-  //     if(this.authService.isAuth()){
-  //       return true;
-  //     }else{
-         
-  //       return false;
-  //     }
-  // }
+
   
 }

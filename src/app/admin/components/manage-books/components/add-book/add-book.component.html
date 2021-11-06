@@ -1,4 +1,4 @@
-<div class="container" style="padding-top:100px;padding-bottom: 40px;">
+<div class="container text-light" style="padding-top:100px;padding-bottom: 40px;">
     <div class="row">
       <div class="col-md-12">
         <h1>Add New Book</h1>
@@ -9,7 +9,7 @@
       <!-- image upload from -->
       <form class="col-md-6 offset-md-3 mb-3" [formGroup]="addImageForm" (ngSubmit)="handleAddImage()">
         <!-- step 7: work on submission flow -- ref ts for step 8-->
-        <div class="form-group row mb-1">
+        <div class="form-group row mb-1 ">
           <label for="staticTitle" class="col-sm-2 col-form-label">BookCover</label>
           <div class="col-sm-10">
             <!-- step 4: patchup form fields with the FormControl in ts -->
@@ -66,17 +66,20 @@
         </div>
 
         <div class="form-group row mb-3">
-          <label for="staticTitle" class="col-sm-2 col-form-label">Category</label>
+          <label for="staticPhone" class="col-sm-2 col-form-label">Category</label>
           <div class="col-sm-10">
-            <!-- step 4: patchup form fields with the FormControl in ts -->
-            <!-- goto ts for step 5-->
-            <input type="number" class="form-control"
-            [ngClass]="{'is-invalid':addBookForm.get('Categoryid')?.touched && addBookForm.get('Categoryid')?.invalid}" 
-            placeholder="Enter Book Category" formControlName="Categoryid"
-            />
-            <!-- step6: displaying validation related msg -->
+            <select  class="form-control" 
+            [ngClass]="{'is-invalid':addBookForm.get('Categoryid')?.touched && addBookForm.get('Categoryid')?.invalid}" placeholder="Enter Category" 
+            formControlName="Categoryid" *ngFor="let category of categories" 
+            >
+            
+            <option value="{{category.CategoryId}}">{{category.CategoryName}}</option>
+            <!-- <option value="false">Inactive</option> -->
+          
+          </select>
             <div class="invalid-feedback">
               <div *ngIf="addBookForm.get('Categoryid')?.errors?.required">Category is required</div>
+              
             </div>
           </div>
         </div>
@@ -84,7 +87,7 @@
         <div class="form-group row mb-3">
           <label for="staticIsbn" class="col-sm-2 col-form-label">ISBN</label>
           <div class="col-sm-10">
-            <input type="number" class="form-control" 
+            <input type="text" class="form-control" 
             [ngClass]="{'is-invalid':addBookForm.get('isbn')?.touched && addBookForm.get('isbn')?.invalid}" placeholder="Enter Book ISBN" 
             formControlName="isbn"
             />
@@ -134,19 +137,7 @@
               </div>
             </div>
           </div>
-          <div class="form-group row mb-3">
-            <label for="staticPosition" class="col-sm-2 col-form-label">Position</label>
-            <div class="col-sm-10">
-              <input type="number" class="form-control" 
-              [ngClass]="{'is-invalid':addBookForm.get('position')?.touched && addBookForm.get('position')?.invalid}" placeholder="Enter Position" 
-              formControlName="position"
-              />
-              <div class="invalid-feedback">
-                <div *ngIf="addBookForm.get('position')?.errors?.required">Position is required</div>
-                
-              </div>
-            </div>
-          </div>
+
           <div class="form-group row mb-3">
             <label for="staticPhone" class="col-sm-2 col-form-label">Status</label>
             <div class="col-sm-10">

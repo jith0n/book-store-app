@@ -7,7 +7,7 @@ import {map} from 'rxjs/operators'
 })
 export class BooksService {
 
-  readonly apiName = "https://localhost:44332/api/books";
+  readonly apiName = "https://localhost:44392/api/books";
 
   constructor(private http: HttpClient) { }
 

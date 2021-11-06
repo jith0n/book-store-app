@@ -8,8 +8,8 @@ import { map, take } from 'rxjs/operators';
 })
 export class CartItemsService {
 
-  apiNameCart = "https://localhost:44332/api/carts/";
-  apiNameWishList = "https://localhost:44332/api/Wishlist/";
+  apiNameCart = "https://localhost:44392/api/carts/";
+  apiNameWishList = "https://localhost:44392/api/Wishlist/";
   
 //Step 1: Have the default card items
   // We will normally load this from REST API
@@ -39,7 +39,7 @@ export class CartItemsService {
 
   getWishList():any{
     let userId = localStorage.getItem('Id');
-   return this.http.get(this.apiNameWishList)
+   return this.http.get(this.apiNameWishList+'user'+'?id='+userId)
       .pipe(map((res: any)=>{
         console.log(res);
         
@@ -49,7 +49,7 @@ export class CartItemsService {
 
   getCart():any{
    let userId = localStorage.getItem('Id');
-   return this.http.get(this.apiNameCart)
+   return this.http.get(this.apiNameCart+'user'+'?id='+userId)
       .pipe(map((res: any)=>{
         console.log(res);
         
@@ -75,13 +75,26 @@ export class CartItemsService {
 
   }
 
-  removeCart(book: any): void{    //must remove book from cart
-
+  removeWish(wishId: number | null): any{
+    console.log("inside serivices");
+    let bookIdUrl = this.apiNameWishList+wishId;
+    return this.http.delete(bookIdUrl)
+      .pipe(map((res: any)=>{
+        console.log(res);
+        return res;
+      }));
   }
 
-  removeWishlist(book:any): void{   //must remove book from wishlist
-
+  removeCart(cartId: number | null): any{
+    console.log("inside serivices");
+    let bookIdUrl = this.apiNameCart+cartId;
+    return this.http.delete(bookIdUrl)
+      .pipe(map((res: any)=>{
+        console.log(res);
+        return res;
+      }));
   }
+
 
 
 

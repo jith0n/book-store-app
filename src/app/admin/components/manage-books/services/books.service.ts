@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 })
 export class BooksService {
 
-  readonly apiName = "https://localhost:44332/api/books";
+  readonly apiName = "https://localhost:44392/api/books";
 
   constructor(private http: HttpClient) { }
 
@@ -20,7 +20,7 @@ export class BooksService {
     formData.append("file", imgFile,imgFile.name);
 
     //make http post request with form data
-    return this.http.post('https://localhost:44332/api/upload/image',formData)
+    return this.http.post('https://localhost:44392/api/upload/image',formData)
       .pipe(map((res: any) => {
         console.log(res);
         return res;
@@ -30,6 +30,16 @@ export class BooksService {
   getBooks(): any{
     console.log("inside serivices");
     return this.http.get(this.apiName)
+      .pipe(map((res: any)=>{
+        console.log(res);
+        return res;
+      }));
+      
+  }
+
+  getCategories(): any{
+    console.log("inside serivices");
+    return this.http.get("https://localhost:44392/api/category")
       .pipe(map((res: any)=>{
         console.log(res);
         return res;
@@ -60,7 +70,7 @@ export class BooksService {
   createBook(formData: any): any{
     console.log(formData);
 
-    return this.http.post("https://localhost:44332/api/books",formData)
+    return this.http.post("https://localhost:44392/api/books",formData)
       .pipe(map((res: any) => {
         console.log(res);
         return res;

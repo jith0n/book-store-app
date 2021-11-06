@@ -1,37 +1,28 @@
 
 <div class="container"> 
-     <form class="d-flex p-5"><input  #bookName class="my-5 form-control me-2" type="search" placeholder="Enter Book Name"
-                    aria-label="Search"><button class="my-5 btn btn-outline-success" type="submit">Search</button></form>
+     <form class="d-flex p-5"><input  #bookName class="my-5 form-control me-2 bg-dark text-light" type="search" placeholder="Enter Book Name"
+                    aria-label="Search"><button class="my-5 btn btn-outline-success bg-dark" type="submit">Search</button></form>
     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-3">
     
 
-        <div class="col mb-3" id="bookCard" *ngFor="let book of bookList | searchFilter: 'Title': bookName.value">
-            <div class="card shadow-sm">
-                <img src="{{book.ImageUrl}}" alt="Book test" routerLink="/books/{{book.BookId}}" style="cursor:pointer;" >
+        <div class="col mb-3"  *ngFor="let book of bookList | searchFilter: 'Title': bookName.value">
+            <div class="card bg-dark text-light" id="bookCard">
+                <img src="{{book.ImageUrl}}" alt="Book test" routerLink="/books/{{book.BookId}}" style="cursor:pointer;aspect-ratio: 0.625;" >
 
               <div class="card-body">
                 <p class="card-text fw-bold h4">{{book.Title}}</p>
                 <p class="h6 fst-italic">{{book.AuthorName}}</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                      <button class="btn btn-primary btn-block" (click)="handleAddtoCart(book)">Add to cart</button>
-                      <button class="btn btn-secondary btn-block" (click)="handleAddtoWishList(book)">Add to wishlist</button>
+                      <button class="btn btn-primary btn-sm " (click)="handleAddtoCart(book)">Add to cart</button>
+                      <button class="btn btn-danger btn-sm" (click)="handleAddtoWishList(book)">Add to wishlist</button>
                   </div>
-                  <p class="fw-bold">&#8377;{{book.Price}}</p>
+                  <h4 class="fw-bold">&#8377;{{book.Price}}</h4>
                 </div>
               </div>
             </div>
           </div>
-  
-        <!-- <app-book-card></app-book-card>
-        <app-book-card></app-book-card>
-        <app-book-card></app-book-card>
-        <app-book-card></app-book-card>
-        <app-book-card></app-book-card>
-        <app-book-card></app-book-card>
-        <app-book-card></app-book-card>
-        <app-book-card></app-book-card>
-        <app-book-card></app-book-card> -->
+
     </div>
 </div>
 

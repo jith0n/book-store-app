@@ -28,17 +28,21 @@ export class BookDetailsComponent implements OnInit {
   }
 
   handleAddtoCart(book: any): void {
-    if (localStorage.getItem("authToken")!=null) {
+    if(localStorage.getItem("authToken")!=null && this.authService.roleMatch(["Customer"])){
       this.updateCartService.updateCart(book);
-    } else {
+    }    else if(localStorage.getItem("authToken")!=null && this.authService.roleMatch(["Admin"])){
+    }
+     else {
       this.router.navigate(['login'], { queryParams: { returnURL: '/books' } });
     }
   }
 
   handleAddtoWishList(book: any): void {
-    if (localStorage.getItem("authToken")!=null) {
+    if(localStorage.getItem("authToken")!=null && this.authService.roleMatch(["Customer"])){
       this.updateCartService.updateWishlist(book);
-    } else {
+    }    else if(localStorage.getItem("authToken")!=null && this.authService.roleMatch(["Admin"])){
+    } 
+    else {
       this.router.navigate(['login'], { queryParams: { returnURL: '/books' } });
     }
   }

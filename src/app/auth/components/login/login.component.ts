@@ -40,18 +40,6 @@ export class LoginComponent implements OnInit {
       this.isLoginError = true;
     });
     
-    // console.log('Logging in...');
-    // console.log(formData.value);
-    // this.authService.login(formData.value)
-    // .subscribe((res:any)=>{
-    //   console.log(res);
-    //   alert("Login Successful");
-    //   if(res && res.token){
-    //     localStorage.setItem('authToken', res.token);
-    //     //read the query parameter to know the return  url
-    //     
-    //   }
-    // })
   }
 
 }

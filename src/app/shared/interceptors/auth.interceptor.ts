@@ -36,7 +36,7 @@ export class AuthInterceptor implements HttpInterceptor {
                 this.router.navigateByUrl('/login');
               }
               else if (error.status === 403){
-                console.log("err401");
+                console.log("err403");
                 this.router.navigateByUrl('/forbidden');
               }
             }
@@ -49,21 +49,6 @@ export class AuthInterceptor implements HttpInterceptor {
     else{
       this.router.navigateByUrl("/login");
     }
-
-
-
-
-    //console.log(request);
-    // // access the token from the storage
-    // const bearerToken = localStorage.getItem('authToken');
-
-    // console.log(bearerToken);
-    // // clone the req, in order to modify req header
-    // request = request.clone({ // and then, inside the cloned req, attach the token
-    //   setHeaders: {
-    //     Authorization: 'Bearer ' + bearerToken
-    //   }
-    // });
 
     console.log(request);
     return next.handle(request);

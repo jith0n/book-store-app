@@ -15,6 +15,9 @@ export class AddBookComponent implements OnInit {
   imgUploadedUrl : any = null;
   imgFile : File |null = null;
 
+
+  categories: any;
+
   addImageForm = new FormGroup({
     image : new FormControl('',Validators.required)
   })
@@ -30,7 +33,6 @@ export class AddBookComponent implements OnInit {
     "stock":new FormControl('',Validators.required),
     "description":new FormControl('',Validators.required),
     "status":new FormControl('',Validators.required),
-    "position":new FormControl('',Validators.required),
     "Categoryid": new FormControl('',Validators.required),
     "image":new FormControl('')
   });
@@ -38,6 +40,12 @@ export class AddBookComponent implements OnInit {
   constructor(private bookService: BooksService) { }
 
   ngOnInit(): void {
+    console.log("inside ngOnit");
+    this.bookService.getCategories()
+      .subscribe((res: any)=>{
+        console.log(res);
+      this.categories=res;
+    });
   }
 
   onChange(event :any):void{
@@ -81,7 +89,6 @@ export class AddBookComponent implements OnInit {
       "Year": this.addBookForm.value.year,
       "Price": this.addBookForm.value.price,
       "Description": this.addBookForm.value.description,
-      "Position": this.addBookForm.value.position,
       "Status": this.addBookForm.value.status ,
       "image": this.imgUploadedUrl,
       "author": this.addBookForm.value.author,

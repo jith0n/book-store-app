@@ -1,23 +1,27 @@
+<div style="padding-top: 100px;padding-bottom: 40px;">
 
-<div class="container card " id="bookDetails">
-    <div class="row" style="padding: 50px;">
+
+<div class="container card bg-dark text-light" id="bookDetails" >
+    <div class="row" style="margin:50px" >
         <div class="col-12 col-md-5 pull-right">
-            <img src="{{bookData.ImageUrl}}" alt="book cover" style="width:70%">
+            <img src="{{bookData.ImageUrl}}" alt="book cover" style="width:70%;margin-bottom: 20px;">
         </div>
         <div class="col-12 col-md-7 " style="text-align: left;">
             <h1>{{bookData.Title}}</h1><br>
-            <h3>{{bookData.Author}}</h3>
-            <hr>
-            <h2>&#8377;{{bookData.Price}}</h2>
+            <h3 class="fst-italic">{{bookData.Author}}</h3>
+            <hr><br>
+            <h2>&#8377;{{bookData.Price}}</h2><br>
             <h3 style="color: green;">{{bookData.stock}}</h3>
-            <hr>
+            
             <button class="btn btn-success mx-2" (click)="handleAddtoCart(bookData)">Add To Cart</button>
             <button class="btn btn-danger mx-2" (click)="handleAddtoWishList(bookData)">Add To WishList</button>
-            
+            <hr><br>
+            <h4>Description</h4>
+            <h5>{{bookData.Description}}</h5>
         </div>
-        <div class="col-12" style="padding-top: 30px;">
+        <div class="col-12 col-md-5" style="padding-top: 30px;">
             
-            <h4>{{bookData.Description}}</h4>
+            
             <h4>Product Details</h4>
             <ul>
                 <li><span class="fw-bold">Book Name: </span><span>{{bookData.Title}}</span></li>
@@ -30,4 +34,5 @@
     </div>
     
 
+</div>
 </div>
