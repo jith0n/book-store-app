@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from 'src/app/shared/models/user';
 import { AuthService } from '../../services/auth.service';
 
@@ -19,7 +20,7 @@ export class SignupComponent implements OnInit {
     cpwd: new FormControl('', [Validators.required])
   })
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,private router: Router) { }
 
   ngOnInit(): void {
     this.resetForm();
@@ -40,6 +41,8 @@ export class SignupComponent implements OnInit {
       .subscribe((data: any) => {
         if (data.Succeeded == true) {
           this.resetForm(form);
+          this.router.navigate(['/']);
+
         }
       });
   }
