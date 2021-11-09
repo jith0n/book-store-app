@@ -44,7 +44,7 @@ namespace BookStoreAPI
                 {
                 "role", Newtonsoft.Json.JsonConvert.SerializeObject(userRoles)
                 },{"Id",user.Id}
-                });
+                });//
                 var token = new AuthenticationTicket(identity, additionalData);
                 context.Validated(token);
             }
